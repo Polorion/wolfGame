@@ -5,12 +5,8 @@ import wolfR from "../../img/wolf/wolf-right.png";
 import Basket from "./Basket/Basket";
 
 const Player = (props) => {
-  console.log(props.position);
   return (
-    <div
-      className={S.player}
-      style={{ top: `${props.top}%`, left: `${props.left}%` }}
-    >
+    <div className={S.player} style={{ left: `${props.left}%` }}>
       <img
         src={props.position === "3" || props.position === "1" ? wolfL : wolfR}
         alt=""

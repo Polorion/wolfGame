@@ -9,4 +9,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  position: relative;
+  z-index: 1000;
 }

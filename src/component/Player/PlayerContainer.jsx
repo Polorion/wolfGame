@@ -3,19 +3,16 @@ import Player from "./Player";
 import { connect } from "react-redux";
 
 const PlayerContainer = (props) => {
-  let top = 50;
   let left = 40;
 
   if (props.position === "1" || props.position === "3") {
-    top = 50;
-    left = 40;
+    left = 33;
   }
   if (props.position === "2" || props.position === "4") {
-    top = 50;
-    left = 50;
+    left = 48;
   }
 
-  return <Player top={top} left={left} position={props.position} />;
+  return <Player left={left} position={props.position} />;
 };
 
 const mapStateToProps = (state) => {

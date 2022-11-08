@@ -9,13 +9,13 @@ const Basket = (props) => {
   const changeImg = () => {
     switch (props.position) {
       case "1":
-        return { img: LB, top: 140, left: -90 };
+        return { img: LB, top: 50, left: -70 };
       case "2":
-        return { img: RB, top: 140, left: 140 };
+        return { img: RB, top: 50, left: 110 };
       case "3":
-        return { img: LT, top: 30, left: -90 };
+        return { img: LT, top: 20, left: -70 };
       case "4":
-        return { img: RT, top: 30, left: 140 };
+        return { img: RT, top: 10, left: 110 };
       default:
         return { img: LB, top: 70, left: -25 };
     }
@@ -24,7 +24,7 @@ const Basket = (props) => {
   return (
     <div
       className={S.bodyBasket}
-      style={{ top: `${changeImg().top}px`, left: `${changeImg().left}px` }}
+      style={{ top: `${changeImg().top}%`, left: `${changeImg().left}%` }}
     >
       <img src={changeImg().img} alt="" />
     </div>
