@@ -1,52 +1,56 @@
-const MoveEggs = "MOVE_EGGS";
-const StopTop = "STOP_TOP";
-const UpActiveEggs = "UP_ACTIVE_EGGS";
-const ChangePosition = "CHANGE_POSITION";
+const ChangePositionWolf = "CHANGE_POSITION";
+const ChangePositionEggs = "CHANGE_POSITION_EGGS";
+const AddEggs = "ADD_EGGS";
+const DeleteEggs = "DELETE_EGGS";
+const MoveAllEggs = "MOVE_ALL_EGGS";
+const startGameOrStop = "GAME_START_OR_STOP";
+const setScore = "SET_SCORE";
 
-export const movingEggs = () => {
+export const AddEggsMore = () => {
   return {
-    type: MoveEggs,
+    type: AddEggs,
   };
 };
-export const stopTop = () => {
+export const upScore = () => {
   return {
-    type: StopTop,
+    type: setScore,
   };
 };
-export const upActiveAggs = () => {
+export const gameStartOrStop = () => {
   return {
-    type: UpActiveEggs,
+    type: startGameOrStop,
+  };
+};
+export const MoveEggsAll = () => {
+  return {
+    type: MoveAllEggs,
+  };
+};
+export const moveEggs = (id) => {
+  return {
+    type: ChangePositionEggs,
+    id,
+  };
+};
+export const deleteEgg = (id) => {
+  return {
+    type: DeleteEggs,
+    id,
   };
 };
 
 export const movePosition = (position) => {
   return {
-    type: ChangePosition,
+    type: ChangePositionWolf,
     position,
   };
 };
 
 const initionalState = {
-  eggs: [
-    {
-      id: 1,
-      top: 20,
-      left: 30,
-      active: false,
-    },
-    { id: 2, top: 30, left: 80, active: false },
-    { id: 3, top: 40, left: 130, active: false },
-    {
-      id: 4,
-      top: 50,
-      left: 190,
-      active: false,
-    },
-    { id: 5, top: 400, left: 190, active: false },
-  ],
-  activeEggs: 0,
-  start: true,
+  leftTopEggs: [],
   position: "1",
+  start: false,
+  score: 0,
 };
 
 const MainRecucer = (state = initionalState, action) => {
@@ -56,26 +60,47 @@ const MainRecucer = (state = initionalState, action) => {
         ...state,
         position: action.position,
       };
-    case "UP_ACTIVE_EGGS":
-      return { ...state, activeEggs: state.activeEggs + 1 };
-    case "STOP_TOP":
+    case "SET_SCORE":
       return {
         ...state,
-        start: false,
+        score: state.score + 1,
       };
-    case "MOVE_EGGS": {
+    case "GAME_START_OR_STOP":
       return {
         ...state,
-
-        eggs: state.eggs.map((el) => {
-          if (el.id === state.activeEggs) {
-            return { ...el, active: true };
-          } else {
-            return { ...el, active: false };
-          }
+        start: !state.start,
+      };
+    case "MOVE_ALL_EGGS":
+      return {
+        ...state,
+        leftTopEggs: state.leftTopEggs.map((el) => {
+          return { ...el, position: el.position + 1 };
         }),
       };
-    }
+    case "DELETE_EGGS":
+      return {
+        ...state,
+        leftTopEggs: state.leftTopEggs.filter((el) => el.id !== action.id),
+      };
+    case "ADD_EGGS":
+      return {
+        ...state,
+        leftTopEggs: [
+          ...state.leftTopEggs,
+          { id: state.leftTopEggs.length + 1, position: 1 },
+        ],
+      };
+    case "CHANGE_POSITION_EGGS":
+      return {
+        ...state,
+        leftTopEggs: state.leftTopEggs.map((el) => {
+          console.log(el.id, action.id);
+          return el.id === action.id
+            ? { ...el, position: el.position + 1 }
+            : { ...el };
+        }),
+      };
+
     default:
       return state;
   }

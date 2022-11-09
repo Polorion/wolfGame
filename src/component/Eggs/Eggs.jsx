@@ -1,12 +1,21 @@
 import * as React from "react";
 import S from "./Eggs.module.scss";
+import eggs from "../../img/egg/egg.png";
+import { useDispatch } from "react-redux";
+import { moveEggs } from "../../store/reducers/RootReduser";
+import { useEffect } from "react";
 
-const Eggs = (props) => {
+const Eggs = ({ positionY, positionX, id, position }) => {
   return (
     <div
-      className={`${props.active && S.active} ${S.eggs}`}
-      style={{ top: `${props.top}px`, left: `${props.left}px` }}
-    ></div>
+      className={`${S.eggsBody}`}
+      style={{
+        transform: `translate(${positionX}px, ${positionY}px) rotate(${positionX}deg)`,
+      }}
+    >
+      {id}
+      <img src={eggs} alt="" />
+    </div>
   );
 };
 

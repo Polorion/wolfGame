@@ -1,8 +1,9 @@
-.chiken {
+.chicken {
   position: absolute;
   left: 30px;
   top: 40px;
   background-color: black;
-  width: 10px;
-  height: 10px;
+  width: 100px;
+  height: 100px;
+  z-index: 999999;
 }
