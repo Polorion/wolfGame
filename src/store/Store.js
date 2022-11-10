@@ -2,12 +2,14 @@ import { combineReducers, legacy_createStore as createStore } from "redux";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import MainRecucer from "./reducers/RootReduser.js";
 import playerReducer from "./reducers/WolfReducer";
+import chickenReducer from "./reducers/ChickenReducer";
+import openChickenReducer from "./reducers/OpenChickeReducer";
 
 const redusers = combineReducers({
-  // MainPage: MainRecucer,
+  chicken: chickenReducer,
   player: playerReducer,
+  openChicken: openChickenReducer,
 });
 
 const store = createStore(redusers, composeWithDevTools());

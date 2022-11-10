@@ -6,6 +6,11 @@ export const movePositionPlayer = (position) => {
     position,
   };
 };
+export const upScore = () => {
+  return {
+    type: setScore,
+  };
+};
 
 const initialState = {
   positionPlayer: "1",

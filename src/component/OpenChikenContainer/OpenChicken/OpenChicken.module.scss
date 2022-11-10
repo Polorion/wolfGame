@@ -1,0 +1,14 @@
+.openBody {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
+}
+.chicken {
+  margin-right: 20px;
+  opacity: 0.2;
+  &.active {
+    opacity: 1;
+  }
+}

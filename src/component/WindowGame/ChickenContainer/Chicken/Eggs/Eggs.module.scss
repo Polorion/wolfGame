@@ -1,0 +1,7 @@
+.eggBody {
+  opacity: 0.2;
+  &.active {
+    opacity: 1;
+    transform: rotate(30deg);
+  }
+}

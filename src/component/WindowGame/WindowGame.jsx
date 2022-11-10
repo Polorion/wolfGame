@@ -4,13 +4,15 @@ import S from "./WindowGame.module.scss";
 import MoveButton from "../MoveButton/MoveButton";
 import PlayerContainer from "../Player/PlayerContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { AddEggsMore, movePosition } from "../../store/reducers/RootReduser";
-import ChickenContainer from "../Chiken/ChickenContainer";
-import { useEffect } from "react";
+
 import { movePositionPlayer } from "../../store/reducers/WolfReducer";
+import ChickenContainer from "./ChickenContainer/ChickenContainer";
+import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
+import { useCallback, useEffect } from "react";
+import { aggEgg } from "../../store/reducers/ChickenReducer";
 
 const WindowGame = () => {
-  const score = useSelector((state) => state.player.score);
+  // const score = useSelector((state) => state.player.score);
   const dispatch = useDispatch();
   const BTN = [
     {
@@ -27,15 +29,21 @@ const WindowGame = () => {
     },
   ];
 
+  setInterval(() => {
+    dispatch(aggEgg());
+    console.log("addEgs");
+  }, 5000);
+
   const changePosition = (pos) => {
     dispatch(movePositionPlayer(pos));
   };
 
   return (
     <div className={S.gameWindow}>
-      <div>{score}</div>
+      {/*<div>{score}</div>*/}
       <div className={"container"}>
-        {/*<ChickenContainer />*/}
+        <ChickenContainer />
+        <OpenChickenContainer />
         <PlayerContainer />
         <div className={S.buttonBody}>
           {BTN.map((el) => (
