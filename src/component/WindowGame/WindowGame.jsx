@@ -30,7 +30,7 @@ const WindowGame = () => {
   setInterval(() => {
     dispatch(aggEgg());
     console.log("addEgs");
-  }, 5000);
+  }, 3000);
 
   const changePosition = (pos) => {
     dispatch(movePositionPlayer(pos));

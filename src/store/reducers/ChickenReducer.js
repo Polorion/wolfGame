@@ -34,7 +34,7 @@ const initialState = {
       position: 5,
     },
   ],
-  activeEggs: [1, 2, 5],
+  activeEggs: [],
 };
 
 const chickenReducer = (state = initialState, action) => {

@@ -35,7 +35,7 @@ const initialState = {
       position: 5,
     },
   ],
-  openChickenPosition: [1],
+  openChickenPosition: [],
 };
 
 const openChickenReducer = (state = initialState, action) => {
