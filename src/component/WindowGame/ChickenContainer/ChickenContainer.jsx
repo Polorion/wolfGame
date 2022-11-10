@@ -1,6 +1,6 @@
 import * as React from "react";
 import Chicken from "./Chicken/Chicken";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { aggEgg, moveEgg } from "../../../store/reducers/ChickenReducer";
 import { useEffect, useMemo, useRef } from "react";
 import { upScore } from "../../../store/reducers/WolfReducer";
@@ -10,17 +10,20 @@ import {
 } from "../../../store/reducers/OpenChickeReducer";
 
 const ChickenContainer = (props) => {
+  const score = useSelector((state) => state.player.score);
   const refPosition = useRef(props.positionPlayer);
   refPosition.current = props.positionPlayer;
   const refEggs = useRef(props.activeEggs);
   refEggs.current = props.activeEggs;
   const eggMove = () => {
     props.moveEgg();
+    props.moveOpenEgg();
     if (refPosition.current === "3" && refEggs.current.includes(5)) {
       props.upScore();
       console.log("yes");
     }
-    if (props.activeEggs.includes(5) && props.positionPlayer !== "1") {
+    if (refEggs.current.includes(5) && refPosition.current !== "3") {
+      props.startOpenEgg();
     }
   };
 
@@ -36,20 +39,21 @@ const ChickenContainer = (props) => {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          eggMove();
-        }}
-      >
-        move
-      </button>{" "}
-      <button
-        onClick={() => {
-          props.aggEgg();
-        }}
-      >
-        aggegs
-      </button>
+      <div>{score}</div>
+      {/*<button*/}
+      {/*  onClick={() => {*/}
+      {/*    eggMove();*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  move*/}
+      {/*</button>{" "}*/}
+      {/*<button*/}
+      {/*  onClick={() => {*/}
+      {/*    props.aggEgg();*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  aggegs*/}
+      {/*</button>*/}
       <Chicken
         eggs={props.chickenTopLeft}
         activeEggs={props.activeEggs}

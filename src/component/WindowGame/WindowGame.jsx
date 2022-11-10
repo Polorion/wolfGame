@@ -8,11 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { movePositionPlayer } from "../../store/reducers/WolfReducer";
 import ChickenContainer from "./ChickenContainer/ChickenContainer";
 import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
-import { useCallback, useEffect } from "react";
 import { aggEgg } from "../../store/reducers/ChickenReducer";
 
 const WindowGame = () => {
-  // const score = useSelector((state) => state.player.score);
   const dispatch = useDispatch();
   const BTN = [
     {
