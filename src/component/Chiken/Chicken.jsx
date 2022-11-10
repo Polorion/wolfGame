@@ -16,6 +16,7 @@ const Chicken = (props) => {
             deleteEggs={props.deleteEggs}
             wolfPosition={props.wolfPosition}
             upScore={props.upScore}
+            from={props.from}
           />
         );
       })}

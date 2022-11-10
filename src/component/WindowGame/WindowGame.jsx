@@ -4,11 +4,13 @@ import S from "./WindowGame.module.scss";
 import MoveButton from "../MoveButton/MoveButton";
 import PlayerContainer from "../Player/PlayerContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { movePosition } from "../../store/reducers/RootReduser";
+import { AddEggsMore, movePosition } from "../../store/reducers/RootReduser";
 import ChickenContainer from "../Chiken/ChickenContainer";
+import { useEffect } from "react";
+import { movePositionPlayer } from "../../store/reducers/WolfReducer";
 
 const WindowGame = () => {
-  const score = useSelector((state) => state.MainPage.score);
+  const score = useSelector((state) => state.player.score);
   const dispatch = useDispatch();
   const BTN = [
     {
@@ -26,14 +28,14 @@ const WindowGame = () => {
   ];
 
   const changePosition = (pos) => {
-    dispatch(movePosition(pos));
+    dispatch(movePositionPlayer(pos));
   };
 
   return (
     <div className={S.gameWindow}>
       <div>{score}</div>
       <div className={"container"}>
-        <ChickenContainer />
+        {/*<ChickenContainer />*/}
         <PlayerContainer />
         <div className={S.buttonBody}>
           {BTN.map((el) => (

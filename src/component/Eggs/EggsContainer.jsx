@@ -1,18 +1,24 @@
 import * as React from "react";
 import Eggs from "./Eggs";
 import { useDispatch } from "react-redux";
-import { upScore } from "../../store/reducers/RootReduser";
+import { moveOneEgg } from "../../store/reducers/RootReduser";
+import { useEffect } from "react";
 
 const EggsContainer = (props) => {
-  if (props.wolfPosition === "1" && props.position === 5) {
-    console.log("WOW");
-    props.upScore();
-    props.deleteEggs(props.id);
-  }
-  if (props.position > 5) {
-    props.deleteEggs(props.id);
-    console.log("crash");
-  }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(moveOneEgg(props.id, props.from));
+      if (props.wolfPosition === "1" && props.position === 5) {
+        props.upScore();
+        props.deleteEggs(props.id, props.from);
+      }
+      if (props.position > 5) {
+        props.deleteEggs(props.id, props.from);
+      }
+    }, 1000);
+  }, [props.position]);
+
   const positionY = () => {
     switch (props.position) {
       case 1:
@@ -26,7 +32,7 @@ const EggsContainer = (props) => {
       case 5:
         return 50;
       case 6:
-        return 201;
+        return 20;
     }
   };
   const positionX = () => {
@@ -51,6 +57,7 @@ const EggsContainer = (props) => {
       positionX={positionX()}
       positionY={positionY()}
       id={props.id}
+      from={props.from}
       position={props.position}
     />
   );

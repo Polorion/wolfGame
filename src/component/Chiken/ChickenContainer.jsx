@@ -3,40 +3,34 @@ import Chicken from "./Chicken";
 import { connect } from "react-redux";
 import {
   AddEggsMore,
+  changeInterval,
   deleteEgg,
   gameStartOrStop,
   MoveEggsAll,
   upScore,
 } from "../../store/reducers/RootReduser";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 const ChickenContainer = (props) => {
-  console.log(props.leftTopEggs);
-  useEffect(() => {
-    let timer;
-    if (props.start === true) {
-      timer = setInterval(() => {
-        props.MoveEggsAll();
-      }, 1000);
-    }
-    return () => {
-      clearInterval(timer);
-    };
-  }, [props.start]);
+  const interval = useMemo(() => {
+    return setInterval(() => {
+      props.AddEggsMore("leftTopEggs");
+      props.AddEggsMore("leftBottomEggs");
+    }, props.interval);
+  }, [props.interval]);
+  console.log(interval);
 
-  const startOrStop = () => {
-    props.gameStartOrStop();
+  const testinterval = (number) => {
+    clearInterval(interval);
+    props.changeInterval(number);
   };
+
   const addEggs = () => {
-    setTimeout(() => {
-      props.AddEggsMore();
-    }, 1000);
+    props.AddEggsMore("leftTopEggs");
   };
-  const moveEggs = () => {
-    props.MoveEggsAll();
-  };
-  const deleteEggs = (id) => {
-    props.deleteEgg(id);
+
+  const deleteEggs = (id, from) => {
+    props.deleteEgg(id, from);
   };
   const upScore = () => {
     props.upScore();
@@ -45,14 +39,13 @@ const ChickenContainer = (props) => {
   return (
     <div>
       <div>
-        <button onClick={startOrStop}>startorgame </button>
         <button onClick={addEggs}>addEggs </button>
         <button
           onClick={() => {
-            deleteEggs(1);
+            testinterval(4000);
           }}
         >
-          deleteone{" "}
+          addEdsdsggs{" "}
         </button>
       </div>
       <Chicken
@@ -60,7 +53,15 @@ const ChickenContainer = (props) => {
         deleteEggs={deleteEggs}
         wolfPosition={props.wolfPosition}
         upScore={upScore}
+        from={"leftTopEggs"}
       />
+      {/*<Chicken*/}
+      {/*  eggs={props.leftBottomEggs}*/}
+      {/*  deleteEggs={deleteEggs}*/}
+      {/*  wolfPosition={props.wolfPosition}*/}
+      {/*  upScore={upScore}*/}
+      {/*  from={"leftBottomEggs"}*/}
+      {/*/>*/}
     </div>
   );
 };
@@ -69,13 +70,18 @@ const mapStateToProps = (state) => {
   return {
     wolfPosition: state.MainPage.position,
     leftTopEggs: state.MainPage.leftTopEggs,
+    leftBottomEggs: state.MainPage.leftBottomEggs,
+    rightTopEggs: state.MainPage.rightTopEggs,
+    rightBottomEggs: state.MainPage.rightBottomEggs,
     start: state.MainPage.start,
+    interval: state.MainPage.interval,
   };
 };
 export default connect(mapStateToProps, {
   gameStartOrStop,
   upScore,
   MoveEggsAll,
+  changeInterval,
   AddEggsMore,
   deleteEgg,
 })(ChickenContainer);
