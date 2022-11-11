@@ -14,15 +14,16 @@ import { useEffect, useRef, useState } from "react";
 
 const WindowGame = () => {
   const ref = useRef();
-  const [h, setH] = useState(document.querySelector("body").clientHeight);
+  console.log(window.screen);
+  const [h, setH] = useState(window.screen.availWidth);
   useEffect(() => {
     window.addEventListener("resize", () => {
       const w = document.querySelector(".container").clientWidth;
       setH(w * 1);
-    });
-    window.addEventListener("orientationchange", function () {
-      const w = document.querySelector(".container").clientWidth;
-      setH(w * 1);
+      window.addEventListener("orientationchange", function () {
+        const w = document.querySelector(".container").clientWidth;
+        setH(w * 1);
+      });
     });
   });
   const dispatch = useDispatch();
