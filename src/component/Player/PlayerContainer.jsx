@@ -3,6 +3,7 @@ import Player from "./Player";
 import { connect } from "react-redux";
 import wolfL from "../../img/wolf/wolf-left.png";
 import wolfR from "../../img/wolf/wolf-right.png";
+import S from "./Player.module.scss";
 
 const PlayerContainer = (props) => {
   const setActive = () => {
@@ -23,14 +24,14 @@ const PlayerContainer = (props) => {
   return (
     <div>
       <Player
-        left={30}
+        left={34}
         position={props.position}
         img={wolfL}
         active={setActive().r}
         positionBasket={"1"}
       />
       <Player
-        left={50}
+        left={52}
         position={props.position}
         img={wolfR}
         active={setActive().l}

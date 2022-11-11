@@ -8,9 +8,7 @@ const MoveButton = (props) => {
         props.action(props.position);
       }}
       className={`${S.btn} ${props.position}`}
-    >
-      press{" "}
-    </div>
+    ></div>
   );
 };
 

@@ -4,7 +4,6 @@ import S from "./Player.module.scss";
 import Basket from "./Basket/Basket";
 
 const Player = (props) => {
-  console.log(props.right);
   return (
     <div
       className={S.player}

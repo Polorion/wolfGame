@@ -10,9 +10,17 @@ import ChickenContainer from "./ChickenContainer/ChickenContainer";
 import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
 import { aggEgg } from "../../store/reducers/ChickenReducer";
 import { fromEggs } from "../../Helper/CreateFromEggs";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const WindowGame = () => {
+  const ref = useRef();
+  const [h, setH] = useState(document.querySelector("body").clientHeight);
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      const w = document.querySelector(".container").clientWidth;
+      setH(w * 1);
+    });
+  });
   const dispatch = useDispatch();
   const BTN = [
     {
@@ -44,7 +52,15 @@ const WindowGame = () => {
 
   return (
     <div className={S.gameWindow}>
-      <div className={"container"}>
+      <div
+        className={"container"}
+        ref={ref}
+        style={{
+          height: `${h}px`,
+          maxHeight: `${document.querySelector("body").clientHeight}px`,
+          maxWidth: `${document.querySelector("body").clientHeight}px`,
+        }}
+      >
         <ChickenContainer />
         <OpenChickenContainer />
         <PlayerContainer />

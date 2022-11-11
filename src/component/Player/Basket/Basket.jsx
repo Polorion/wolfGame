@@ -41,12 +41,12 @@ const Basket = (props) => {
     }
   };
   const basketLeft = [
-    { img: LB, top: 50, left: -70, active: basketActive().lb },
-    { img: LT, top: 20, left: -70, active: basketActive().lt },
+    { img: LB, top: 50, left: -35, active: basketActive().lb },
+    { img: LT, top: 10, left: -35, active: basketActive().lt },
   ];
   const basketRight = [
-    { img: RB, top: 50, left: 70, active: basketActive().rb },
-    { img: RT, top: 10, left: 70, active: basketActive().rt },
+    { img: RB, top: 50, left: 85, active: basketActive().rb },
+    { img: RT, top: 10, left: 95, active: basketActive().rt },
   ];
 
   return (
