@@ -84,28 +84,28 @@ const ChickenContainer = (props) => {
       {/*  aggegs*/}
       {/*</button>*/}
       <Chicken
-        coordinates={{ top: 130, left: 80, right: 0 }}
+        coordinates={{ top: 35 }}
         eggs={props.chickenTopLeft}
         activeEggs={props.activeEggsTopLeft}
         positionPlayer={props.positionPlayer}
         left={true}
       />{" "}
       <Chicken
-        coordinates={{ top: 180, left: 80, right: 0 }}
+        coordinates={{ top: 55 }}
         eggs={props.chickenBottomLeft}
         activeEggs={props.activeEggsBottomLeft}
         positionPlayer={props.positionPlayer}
         left={true}
       />{" "}
       <Chicken
-        coordinates={{ top: 180, right: 50 }}
+        coordinates={{ top: 35 }}
         eggs={props.chickenTopRight}
         activeEggs={props.activeEggsTopRight}
         positionPlayer={props.positionPlayer}
         left={false}
       />{" "}
       <Chicken
-        coordinates={{ top: 280, right: 50 }}
+        coordinates={{ top: 55 }}
         eggs={props.chickenBottomRight}
         activeEggs={props.activeEggsBottomRight}
         positionPlayer={props.positionPlayer}

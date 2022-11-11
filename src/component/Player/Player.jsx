@@ -4,8 +4,14 @@ import S from "./Player.module.scss";
 import Basket from "./Basket/Basket";
 
 const Player = (props) => {
+  console.log(props.right);
   return (
-    <div className={S.player} style={{ left: `${props.left}%` }}>
+    <div
+      className={S.player}
+      style={{
+        left: `${props.left ? props.left : 0}% `,
+      }}
+    >
       <img
         className={`${S.img} ${props.active && S.active}`}
         src={props.img}

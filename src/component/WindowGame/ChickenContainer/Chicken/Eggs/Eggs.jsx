@@ -7,10 +7,12 @@ const Eggs = (props) => {
     <div
       className={`${S.eggBody} ${props.active && S.active}`}
       style={{
-        position: "absolute",
-        left: `${props.position}px`,
-        top: `${props.position}px`,
-        transform: `rotate(${props.position + 20}deg)  `,
+        position: "relative",
+        // left: `${-props.position + 20}%`,
+        top: `${props.position + 90}%`,
+        transform: `rotate(${
+          props.left ? props.position + 20 : props.position - 20
+        }deg)  `,
       }}
     >
       <img src={egg} alt="" />

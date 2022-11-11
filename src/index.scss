@@ -14,11 +14,19 @@ code {
 }
 
 .container {
-  width: 90%;
-  height: 90%;
+  max-width: 500px;
+  width: 70%;
+  max-height: 300px;
+  height: 100%;
   background-color: green;
   margin: 0 auto;
   position: relative;
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    max-width: 80%;
+  }
 }
 
 html,

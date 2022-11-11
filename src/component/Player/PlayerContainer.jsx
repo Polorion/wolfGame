@@ -23,14 +23,14 @@ const PlayerContainer = (props) => {
   return (
     <div>
       <Player
-        left={33}
+        left={30}
         position={props.position}
         img={wolfL}
         active={setActive().r}
         positionBasket={"1"}
       />
       <Player
-        left={48}
+        left={45}
         position={props.position}
         img={wolfR}
         active={setActive().l}

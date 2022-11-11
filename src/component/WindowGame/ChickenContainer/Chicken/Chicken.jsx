@@ -5,13 +5,12 @@ import Eggs from "./Eggs/Eggs";
 const Chicken = (props) => {
   return (
     <div
-      className={S.chickenBody}
+      className={`${S.chickenBody} ${!props.left && S.chickenBodyRight}`}
       style={{
-        top: `${props.coordinates?.top}px`,
-        left: `${props.coordinates?.left}px`,
-        right: `${props.coordinates?.right}px`,
+        top: `${props.coordinates?.top}%`,
       }}
     >
+      <div className={S.chickenImg}></div>
       <div className={`${S.eggsBody} ${!props.left && S.right}`}>
         {props.eggs.map((el, i) => (
           <Eggs
@@ -19,6 +18,7 @@ const Chicken = (props) => {
             position={el.id * 20}
             active={props.activeEggs.includes(props.eggs[i].id)}
             number={el.id}
+            left={props.left}
           />
         ))}
       </div>

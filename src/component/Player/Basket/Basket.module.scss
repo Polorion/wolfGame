@@ -1,6 +1,6 @@
 .bodyBasket {
-  width: 60px;
-  height: 40px;
+  width: 50px;
+  height: 30px;
   position: absolute;
   opacity: 0.2;
   &.active {
@@ -11,3 +11,10 @@
     height: 100%;
   }
 }
+
+//@media screen and (max-width: 450px) {
+//  .bodyBasket {
+//    width: 25px;
+//    height: 15px;
+//  }
+//}
