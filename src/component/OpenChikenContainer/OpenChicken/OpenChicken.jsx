@@ -4,7 +4,14 @@ import egg from "../../../img/egg/egg.png";
 
 const OpenChicken = (props) => {
   return (
-    <div className={S.openBody}>
+    <div
+      className={`${S.openBody} ${props.right && S.right}`}
+      style={{
+        bottom: `${props.coordinates?.bottom}px`,
+        left: `${props.coordinates?.left}px`,
+        right: `${props.coordinates?.right}px`,
+      }}
+    >
       {props.open.map((el, i) => {
         return (
           <div

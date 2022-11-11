@@ -6,9 +6,10 @@ export const moveOpenEgg = () => {
     type: moveOpen,
   };
 };
-export const startOpenEgg = () => {
+export const startOpenEgg = (from) => {
   return {
     type: openStart,
+    from,
   };
 };
 
@@ -35,7 +36,30 @@ const initialState = {
       position: 5,
     },
   ],
-  openChickenPosition: [],
+  openChickenPositionLeft: [],
+  openChickenRight: [
+    {
+      id: 1,
+      position: 1,
+    },
+    {
+      id: 2,
+      position: 2,
+    },
+    {
+      id: 3,
+      position: 3,
+    },
+    {
+      id: 4,
+      position: 4,
+    },
+    {
+      id: 5,
+      position: 5,
+    },
+  ],
+  openChickenPositionRight: [],
 };
 
 const openChickenReducer = (state = initialState, action) => {
@@ -43,13 +67,20 @@ const openChickenReducer = (state = initialState, action) => {
     case "OPEN_START": {
       return {
         ...state,
-        openChickenPosition: [1, ...state.openChickenPosition],
+        [action.from]: [1, ...state[action.from]],
       };
     }
     case "MOVE_OPEN": {
       return {
         ...state,
-        openChickenPosition: state.openChickenPosition
+        openChickenPositionLeft: state.openChickenPositionLeft
+          .map((el) => {
+            return el + 1;
+          })
+          .filter((el) => {
+            return el < 6;
+          }),
+        openChickenPositionRight: state.openChickenPositionRight
           .map((el) => {
             return el + 1;
           })

@@ -7,7 +7,15 @@ const OpenChickenContainer = (props) => {
     <div>
       <OpenChicken
         open={props.openLeft}
-        openChickenPosition={props.openChickenPosition}
+        openChickenPosition={props.openChickenPositionLeft}
+        coordinates={{ bottom: 30, left: 60 }}
+        right={false}
+      />{" "}
+      <OpenChicken
+        open={props.openLeft}
+        openChickenPosition={props.openChickenPositionRight}
+        coordinates={{ bottom: 30, right: 80 }}
+        right={true}
       />
     </div>
   );
@@ -16,7 +24,8 @@ const OpenChickenContainer = (props) => {
 const mapStateToProps = (state) => {
   return {
     openLeft: state.openChicken.openChickenLeft,
-    openChickenPosition: state.openChicken.openChickenPosition,
+    openChickenPositionLeft: state.openChicken.openChickenPositionLeft,
+    openChickenPositionRight: state.openChicken.openChickenPositionRight,
   };
 };
 export default connect(mapStateToProps, {})(OpenChickenContainer);

@@ -1,9 +1,10 @@
 const changeActiveEgg = "CHANGE_ACTIVE_EGG";
 const eggStart = "EGG_START";
 
-export const aggEgg = () => {
+export const aggEgg = (from) => {
   return {
     type: eggStart,
+    from,
   };
 };
 export const moveEgg = () => {
@@ -34,7 +35,76 @@ const initialState = {
       position: 5,
     },
   ],
-  activeEggs: [],
+  activeEggsTopLeft: [],
+  chickenBottomLeft: [
+    {
+      id: 1,
+      position: 1,
+    },
+    {
+      id: 2,
+      position: 2,
+    },
+    {
+      id: 3,
+      position: 3,
+    },
+    {
+      id: 4,
+      position: 4,
+    },
+    {
+      id: 5,
+      position: 5,
+    },
+  ],
+  activeEggsBottomLeft: [],
+  chickenTopRight: [
+    {
+      id: 1,
+      position: 1,
+    },
+    {
+      id: 2,
+      position: 2,
+    },
+    {
+      id: 3,
+      position: 3,
+    },
+    {
+      id: 4,
+      position: 4,
+    },
+    {
+      id: 5,
+      position: 5,
+    },
+  ],
+  activeEggsTopRight: [],
+  chickenBottomRight: [
+    {
+      id: 1,
+      position: 1,
+    },
+    {
+      id: 2,
+      position: 2,
+    },
+    {
+      id: 3,
+      position: 3,
+    },
+    {
+      id: 4,
+      position: 4,
+    },
+    {
+      id: 5,
+      position: 5,
+    },
+  ],
+  activeEggsBottomRight: [],
 };
 
 const chickenReducer = (state = initialState, action) => {
@@ -42,13 +112,34 @@ const chickenReducer = (state = initialState, action) => {
     case "EGG_START": {
       return {
         ...state,
-        activeEggs: [0, ...state.activeEggs],
+        [action.from]: [0, ...state[action.from]],
       };
     }
     case "CHANGE_ACTIVE_EGG": {
       return {
         ...state,
-        activeEggs: state.activeEggs
+        activeEggsTopLeft: state.activeEggsTopLeft
+          .map((el) => {
+            return el + 1;
+          })
+          .filter((el) => {
+            return el < 6;
+          }),
+        activeEggsBottomLeft: state.activeEggsBottomLeft
+          .map((el) => {
+            return el + 1;
+          })
+          .filter((el) => {
+            return el < 6;
+          }),
+        activeEggsTopRight: state.activeEggsTopRight
+          .map((el) => {
+            return el + 1;
+          })
+          .filter((el) => {
+            return el < 6;
+          }),
+        activeEggsBottomRight: state.activeEggsBottomRight
           .map((el) => {
             return el + 1;
           })

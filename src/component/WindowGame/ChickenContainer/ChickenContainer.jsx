@@ -11,27 +11,56 @@ import {
 
 const ChickenContainer = (props) => {
   const score = useSelector((state) => state.player.score);
+
   const refPosition = useRef(props.positionPlayer);
   refPosition.current = props.positionPlayer;
-  const refEggs = useRef(props.activeEggs);
-  refEggs.current = props.activeEggs;
+
+  const refEggsLT = useRef();
+  refEggsLT.current = props.activeEggsTopLeft;
+
+  const refEggsLB = useRef();
+  refEggsLB.current = props.activeEggsBottomLeft;
+
+  const refEggsRT = useRef();
+  refEggsRT.current = props.activeEggsTopRight;
+
+  const refEggsRB = useRef();
+  refEggsRB.current = props.activeEggsBottomRight;
+
   const eggMove = () => {
     props.moveEgg();
     props.moveOpenEgg();
-    if (refPosition.current === "3" && refEggs.current.includes(5)) {
+    if (refPosition.current === "3" && refEggsLT.current.includes(5)) {
       props.upScore();
-      console.log("yes");
     }
-    if (refEggs.current.includes(5) && refPosition.current !== "3") {
-      props.startOpenEgg();
+    if (refEggsLT.current.includes(5) && refPosition.current !== "3") {
+      props.startOpenEgg("openChickenPositionLeft");
+    }
+    if (refPosition.current === "1" && refEggsLB.current.includes(5)) {
+      props.upScore();
+    }
+    if (refEggsLB.current.includes(5) && refPosition.current !== "1") {
+      props.startOpenEgg("openChickenPositionLeft");
+    }
+
+    if (refPosition.current === "4" && refEggsRT.current.includes(5)) {
+      props.upScore();
+    }
+    if (refEggsRT.current.includes(5) && refPosition.current !== "4") {
+      props.startOpenEgg("openChickenPositionRight");
+    }
+    if (refPosition.current === "2" && refEggsRB.current.includes(5)) {
+      props.upScore();
+    }
+    if (refEggsRB.current.includes(5) && refPosition.current !== "2") {
+      props.startOpenEgg("openChickenPositionRight");
     }
   };
 
   useEffect(() => {
     const t = setInterval(() => {
       eggMove();
-      console.log("render!", refPosition.current);
-    }, 1000);
+    }, 500);
     return () => {
       clearInterval(t);
     };
@@ -55,9 +84,32 @@ const ChickenContainer = (props) => {
       {/*  aggegs*/}
       {/*</button>*/}
       <Chicken
+        coordinates={{ top: 130, left: 80, right: 0 }}
         eggs={props.chickenTopLeft}
-        activeEggs={props.activeEggs}
+        activeEggs={props.activeEggsTopLeft}
         positionPlayer={props.positionPlayer}
+        left={true}
+      />{" "}
+      <Chicken
+        coordinates={{ top: 180, left: 80, right: 0 }}
+        eggs={props.chickenBottomLeft}
+        activeEggs={props.activeEggsBottomLeft}
+        positionPlayer={props.positionPlayer}
+        left={true}
+      />{" "}
+      <Chicken
+        coordinates={{ top: 180, right: 50 }}
+        eggs={props.chickenTopRight}
+        activeEggs={props.activeEggsTopRight}
+        positionPlayer={props.positionPlayer}
+        left={false}
+      />{" "}
+      <Chicken
+        coordinates={{ top: 280, right: 50 }}
+        eggs={props.chickenBottomRight}
+        activeEggs={props.activeEggsBottomRight}
+        positionPlayer={props.positionPlayer}
+        left={false}
       />
     </div>
   );
@@ -67,7 +119,14 @@ const mapStateToProps = (state) => {
     positionPlayer: state.player.positionPlayer,
     score: state.player.score,
     chickenTopLeft: state.chicken.chickenTopLeft,
-    activeEggs: state.chicken.activeEggs,
+    chickenBottomLeft: state.chicken.chickenBottomLeft,
+    chickenTopRight: state.chicken.chickenTopRight,
+    chickenBottomRight: state.chicken.chickenBottomRight,
+
+    activeEggsTopLeft: state.chicken.activeEggsTopLeft,
+    activeEggsTopRight: state.chicken.activeEggsTopRight,
+    activeEggsBottomRight: state.chicken.activeEggsBottomRight,
+    activeEggsBottomLeft: state.chicken.activeEggsBottomLeft,
   };
 };
 export default connect(mapStateToProps, {

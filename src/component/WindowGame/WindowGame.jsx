@@ -9,6 +9,8 @@ import { movePositionPlayer } from "../../store/reducers/WolfReducer";
 import ChickenContainer from "./ChickenContainer/ChickenContainer";
 import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
 import { aggEgg } from "../../store/reducers/ChickenReducer";
+import { fromEggs } from "../../Helper/CreateFromEggs";
+import { useEffect } from "react";
 
 const WindowGame = () => {
   const dispatch = useDispatch();
@@ -26,11 +28,15 @@ const WindowGame = () => {
       position: "2",
     },
   ];
-
-  setInterval(() => {
-    dispatch(aggEgg());
-    console.log("addEgs");
-  }, 3000);
+  useEffect(() => {
+    const t = setInterval(() => {
+      const from = fromEggs();
+      dispatch(aggEgg(from));
+    }, 1000);
+    return () => {
+      clearInterval(t);
+    };
+  }, []);
 
   const changePosition = (pos) => {
     dispatch(movePositionPlayer(pos));

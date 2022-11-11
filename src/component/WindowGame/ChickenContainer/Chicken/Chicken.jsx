@@ -4,8 +4,15 @@ import Eggs from "./Eggs/Eggs";
 
 const Chicken = (props) => {
   return (
-    <div className={S.chickenBody}>
-      <div className={S.eggsBody}>
+    <div
+      className={S.chickenBody}
+      style={{
+        top: `${props.coordinates?.top}px`,
+        left: `${props.coordinates?.left}px`,
+        right: `${props.coordinates?.right}px`,
+      }}
+    >
+      <div className={`${S.eggsBody} ${!props.left && S.right}`}>
         {props.eggs.map((el, i) => (
           <Eggs
             key={el.id}
