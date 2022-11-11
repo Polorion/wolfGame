@@ -20,6 +20,10 @@ const WindowGame = () => {
       const w = document.querySelector(".container").clientWidth;
       setH(w * 1);
     });
+    window.addEventListener("orientationchange", function () {
+      const w = document.querySelector(".container").clientWidth;
+      setH(w * 1);
+    });
   });
   const dispatch = useDispatch();
   const BTN = [
