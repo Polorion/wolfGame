@@ -30,7 +30,7 @@ const PlayerContainer = (props) => {
         positionBasket={"1"}
       />
       <Player
-        left={45}
+        left={50}
         position={props.position}
         img={wolfR}
         active={setActive().l}

@@ -8,13 +8,13 @@ const OpenChickenContainer = (props) => {
       <OpenChicken
         open={props.openLeft}
         openChickenPosition={props.openChickenPositionLeft}
-        coordinates={{ bottom: 30, left: 60 }}
+        coordinates={{ bottom: 10, left: 10 }}
         right={false}
       />{" "}
       <OpenChicken
         open={props.openLeft}
         openChickenPosition={props.openChickenPositionRight}
-        coordinates={{ bottom: 30, right: 80 }}
+        coordinates={{ bottom: 10, right: 10 }}
         right={true}
       />
     </div>

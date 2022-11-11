@@ -47,17 +47,17 @@ const WindowGame = () => {
       {/*<div>{score}</div>*/}
       <div className={"container"}>
         <ChickenContainer />
-        {/*<OpenChickenContainer />*/}
+        <OpenChickenContainer />
         <PlayerContainer />
-        {/*<div className={S.buttonBody}>*/}
-        {/*  {BTN.map((el) => (*/}
-        {/*    <MoveButton*/}
-        {/*      key={el.position}*/}
-        {/*      position={el.position}*/}
-        {/*      action={changePosition}*/}
-        {/*    />*/}
-        {/*  ))}*/}
-        {/*</div>*/}
+        <div className={S.buttonBody}>
+          {BTN.map((el) => (
+            <MoveButton
+              key={el.position}
+              position={el.position}
+              action={changePosition}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
