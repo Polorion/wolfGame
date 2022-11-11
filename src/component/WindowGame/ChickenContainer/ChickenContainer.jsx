@@ -3,7 +3,7 @@ import Chicken from "./Chicken/Chicken";
 import { connect, useSelector } from "react-redux";
 import { aggEgg, moveEgg } from "../../../store/reducers/ChickenReducer";
 import { useEffect, useMemo, useRef } from "react";
-import { upScore } from "../../../store/reducers/WolfReducer";
+import { missedEggs, upScore } from "../../../store/reducers/WolfReducer";
 import {
   moveOpenEgg,
   startOpenEgg,
@@ -11,6 +11,7 @@ import {
 
 const ChickenContainer = (props) => {
   const score = useSelector((state) => state.player.score);
+  const missedEggs = useSelector((state) => state.player.missedEggs);
 
   const refPosition = useRef(props.positionPlayer);
   refPosition.current = props.positionPlayer;
@@ -35,12 +36,14 @@ const ChickenContainer = (props) => {
     }
     if (refEggsLT.current.includes(5) && refPosition.current !== "3") {
       props.startOpenEgg("openChickenPositionLeft");
+      props.missedEggs();
     }
     if (refPosition.current === "1" && refEggsLB.current.includes(5)) {
       props.upScore();
     }
     if (refEggsLB.current.includes(5) && refPosition.current !== "1") {
       props.startOpenEgg("openChickenPositionLeft");
+      props.missedEggs();
     }
 
     if (refPosition.current === "4" && refEggsRT.current.includes(5)) {
@@ -48,12 +51,14 @@ const ChickenContainer = (props) => {
     }
     if (refEggsRT.current.includes(5) && refPosition.current !== "4") {
       props.startOpenEgg("openChickenPositionRight");
+      props.missedEggs();
     }
     if (refPosition.current === "2" && refEggsRB.current.includes(5)) {
       props.upScore();
     }
     if (refEggsRB.current.includes(5) && refPosition.current !== "2") {
       props.startOpenEgg("openChickenPositionRight");
+      props.missedEggs();
     }
   };
 
@@ -68,7 +73,8 @@ const ChickenContainer = (props) => {
 
   return (
     <div>
-      <div>{score}</div>
+      <div> поймал {score}</div>
+      <div> пропустил {missedEggs}</div>
       {/*<button*/}
       {/*  onClick={() => {*/}
       {/*    eggMove();*/}
@@ -118,6 +124,7 @@ const mapStateToProps = (state) => {
   return {
     positionPlayer: state.player.positionPlayer,
     score: state.player.score,
+    missedEggs: state.player.missedEggs,
     chickenTopLeft: state.chicken.chickenTopLeft,
     chickenBottomLeft: state.chicken.chickenBottomLeft,
     chickenTopRight: state.chicken.chickenTopRight,
@@ -135,4 +142,5 @@ export default connect(mapStateToProps, {
   upScore,
   moveOpenEgg,
   startOpenEgg,
+  missedEggs,
 })(ChickenContainer);

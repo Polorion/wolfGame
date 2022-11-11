@@ -44,7 +44,6 @@ const WindowGame = () => {
 
   return (
     <div className={S.gameWindow}>
-      {/*<div>{score}</div>*/}
       <div className={"container"}>
         <ChickenContainer />
         <OpenChickenContainer />
