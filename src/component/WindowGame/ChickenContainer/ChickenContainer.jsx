@@ -67,12 +67,12 @@ const ChickenContainer = (props) => {
     if (props.gameIsRun) {
       t = setInterval(() => {
         eggMove();
-      }, 500);
+      }, props.speedEggMove);
     }
     return () => {
       clearInterval(t);
     };
-  }, [props.gameIsRun]);
+  }, [props.gameIsRun, props.speedEggMove]);
 
   return (
     <div>
@@ -127,6 +127,7 @@ const mapStateToProps = (state) => {
   return {
     positionPlayer: state.player.positionPlayer,
     score: state.player.score,
+    speedEggMove: state.player.speedEggMove,
     gameIsRun: state.player.gameIsRun,
     missedEggs: state.player.missedEggs,
     chickenTopLeft: state.chicken.chickenTopLeft,

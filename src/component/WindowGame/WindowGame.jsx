@@ -19,6 +19,7 @@ const WindowGame = () => {
   const [h, setH] = useState(window.screen.availWidth);
   const owner = useSelector((state) => state.player.owner);
   const runGame = useSelector((state) => state.player.gameIsRun);
+  const speedEggSpawn = useSelector((state) => state.player.speedEggSpawn);
   useEffect(() => {
     const windowRaz = () => {
       const w = document.querySelector(".container").clientWidth;
@@ -52,12 +53,12 @@ const WindowGame = () => {
       t = setInterval(() => {
         const from = fromEggs();
         dispatch(aggEgg(from));
-      }, 1000);
+      }, speedEggSpawn);
     }
     return () => {
       clearInterval(t);
     };
-  }, [runGame]);
+  }, [runGame, speedEggSpawn]);
 
   const changePosition = (pos) => {
     dispatch(movePositionPlayer(pos));

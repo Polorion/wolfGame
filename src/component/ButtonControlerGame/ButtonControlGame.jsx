@@ -1,9 +1,12 @@
 import * as React from "react";
 import S from "./ButtonControlGame.module.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import jumpSound from "../../audio/drums.mp3";
 
 const ButtonControlGame = (props) => {
+  const [move, setMove] = useState();
+  const [spawn, setSpawn] = useState();
+
   const audioRef = useRef();
 
   const playSound = () => {
@@ -12,6 +15,9 @@ const ButtonControlGame = (props) => {
   };
   const stopSound = () => {
     audioRef.current.pause();
+  };
+  const stopRestart = () => {
+    audioRef.current.fastSeek(0);
   };
 
   return (
@@ -38,6 +44,49 @@ const ButtonControlGame = (props) => {
       >
         {props.gameIsRun ? "пауза" : "начать игру"}
       </button>
+      <button
+        style={{ position: "relative", zIndex: "100000" }}
+        onClick={() => {
+          props.typeGame(1000, 300);
+        }}
+      >
+        игра А
+      </button>{" "}
+      <button
+        style={{ position: "relative", zIndex: "100000" }}
+        onClick={() => {
+          props.typeGame(200, 100);
+        }}
+      >
+        игра Б
+      </button>{" "}
+      {/*<div style={{ position: "relative", zIndex: "99999" }}>*/}
+      {/*  <input*/}
+      {/*    value={spawn}*/}
+      {/*    onInput={(e) => {*/}
+      {/*      setSpawn((prevState) => e.target.value);*/}
+      {/*    }}*/}
+      {/*    type="text"*/}
+      {/*    placeholder={"скорость движения"}*/}
+      {/*  />*/}
+      {/*  {" скорость движения сек"}*/}
+      {/*  <input*/}
+      {/*    value={move}*/}
+      {/*    onInput={(e) => {*/}
+      {/*      setMove((prevState) => e.target.value);*/}
+      {/*    }}*/}
+      {/*    type="text"*/}
+      {/*    placeholder={"скорость появления "}*/}
+      {/*  />*/}
+      {/*  {"скорость появления сек "}*/}
+      {/*  <button*/}
+      {/*    onClick={() => {*/}
+      {/*      props.typeGame(spawn * 1000, move * 1000);*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    go*/}
+      {/*  </button>*/}
+      {/*</div>*/}
     </div>
   );
 };

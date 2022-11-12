@@ -5,6 +5,8 @@ import {
   choiceOwner,
   resetAllScore,
   runGame,
+  setSpeedMoveEgg,
+  setSpeedSpawnEdd,
 } from "../../store/reducers/PlayerReducer";
 import { resetAllChicken } from "../../store/reducers/ChickenReducer";
 import { restartAllEggs } from "../../store/reducers/OpenChickeReducer";
@@ -21,6 +23,11 @@ const ButtonControlGameContainer = (props) => {
     props.resetAllChicken();
     props.restartAllEggs();
   };
+  const typeGame = (spawn, speed) => {
+    props.setSpeedSpawnEdd(spawn);
+    props.setSpeedMoveEgg(speed);
+    restart();
+  };
   return (
     <div>
       <ButtonControlGame
@@ -28,6 +35,7 @@ const ButtonControlGameContainer = (props) => {
         changeRunGame={changeRunGame}
         restart={restart}
         gameIsRun={props.gameIsRun}
+        typeGame={typeGame}
       />
     </div>
   );
@@ -45,4 +53,6 @@ export default connect(mapStateToProps, {
   resetAllScore,
   resetAllChicken,
   restartAllEggs,
+  setSpeedSpawnEdd,
+  setSpeedMoveEgg,
 })(ButtonControlGameContainer);
