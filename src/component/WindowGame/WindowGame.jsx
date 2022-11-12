@@ -5,17 +5,18 @@ import MoveButton from "../MoveButton/MoveButton";
 import PlayerContainer from "../Player/PlayerContainer";
 import { useDispatch, useSelector } from "react-redux";
 
-import { movePositionPlayer } from "../../store/reducers/WolfReducer";
+import { movePositionPlayer } from "../../store/reducers/PlayerReducer";
 import ChickenContainer from "./ChickenContainer/ChickenContainer";
 import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
 import { aggEgg } from "../../store/reducers/ChickenReducer";
 import { fromEggs } from "../../Helper/CreateFromEggs";
 import { useEffect, useRef, useState } from "react";
+import ChoisePlayer from "../ChoicePlayer/ChoicePlayer";
 
 const WindowGame = () => {
   const ref = useRef();
-  console.log(window.screen);
   const [h, setH] = useState(window.screen.availWidth);
+  const owner = useSelector((state) => state.player.owner);
   useEffect(() => {
     window.addEventListener("resize", () => {
       const w = document.querySelector(".container").clientWidth;
@@ -41,19 +42,22 @@ const WindowGame = () => {
       position: "2",
     },
   ];
-  useEffect(() => {
-    const t = setInterval(() => {
-      const from = fromEggs();
-      dispatch(aggEgg(from));
-    }, 1000);
-    return () => {
-      clearInterval(t);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const t = setInterval(() => {
+  //     const from = fromEggs();
+  //     dispatch(aggEgg(from));
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(t);
+  //   };
+  // }, []);
 
   const changePosition = (pos) => {
     dispatch(movePositionPlayer(pos));
   };
+  // if (!owner) {
+  //   return <ChoisePlayer />;
+  // }
 
   return (
     <div className={S.gameWindow}>
@@ -62,7 +66,7 @@ const WindowGame = () => {
         ref={ref}
         style={{
           height: `${h}px`,
-          maxHeight: `${document.querySelector("body").clientHeight}px`,
+          maxHeight: `${500}px`,
           maxWidth: `${document.querySelector("body").clientHeight}px`,
         }}
       >
@@ -78,6 +82,7 @@ const WindowGame = () => {
             />
           ))}
         </div>
+        <ChoisePlayer owner={owner} />
       </div>
     </div>
   );

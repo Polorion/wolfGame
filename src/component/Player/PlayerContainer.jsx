@@ -1,11 +1,29 @@
 import * as React from "react";
 import Player from "./Player";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
+import RabbitL from "../../img/Rabbit/orig.png";
+import rabbitR from "../../img/Rabbit/orig3.png";
 import wolfL from "../../img/wolf/wolf-left.png";
 import wolfR from "../../img/wolf/wolf-right.png";
-import S from "./Player.module.scss";
 
 const PlayerContainer = (props) => {
+  const whoOwner = useSelector((state) => state.player.owner);
+
+  const player = () => {
+    switch (whoOwner) {
+      case "Rabbit":
+        return {
+          playerL: RabbitL,
+          playerR: rabbitR,
+        };
+      case "Wolf":
+        return {
+          playerL: wolfL,
+          playerR: wolfR,
+        };
+    }
+    return {};
+  };
   const setActive = () => {
     if (props.position === "1" || props.position === "3") {
       return {
@@ -26,14 +44,14 @@ const PlayerContainer = (props) => {
       <Player
         left={34}
         position={props.position}
-        img={wolfL}
+        img={player().playerL}
         active={setActive().r}
         positionBasket={"1"}
       />
       <Player
         left={52}
         position={props.position}
-        img={wolfR}
+        img={player().playerR}
         active={setActive().l}
         positionBasket={"2"}
       />

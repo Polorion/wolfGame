@@ -3,7 +3,7 @@ import Chicken from "./Chicken/Chicken";
 import { connect, useSelector } from "react-redux";
 import { aggEgg, moveEgg } from "../../../store/reducers/ChickenReducer";
 import { useEffect, useMemo, useRef } from "react";
-import { missedEggs, upScore } from "../../../store/reducers/WolfReducer";
+import { missedEggs, upScore } from "../../../store/reducers/PlayerReducer";
 import {
   moveOpenEgg,
   startOpenEgg,
