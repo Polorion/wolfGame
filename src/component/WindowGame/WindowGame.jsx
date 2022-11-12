@@ -12,20 +12,24 @@ import { aggEgg } from "../../store/reducers/ChickenReducer";
 import { fromEggs } from "../../Helper/CreateFromEggs";
 import { useEffect, useRef, useState } from "react";
 import ChoisePlayer from "../ChoicePlayer/ChoicePlayer";
+import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
 
 const WindowGame = () => {
   const ref = useRef();
   const [h, setH] = useState(window.screen.availWidth);
   const owner = useSelector((state) => state.player.owner);
+  const runGame = useSelector((state) => state.player.gameIsRun);
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    const windowRaz = () => {
       const w = document.querySelector(".container").clientWidth;
       setH(w * 1);
-      window.addEventListener("orientationchange", function () {
-        const w = document.querySelector(".container").clientWidth;
-        setH(w * 1);
-      });
-    });
+    };
+    window.addEventListener("resize", windowRaz);
+    window.addEventListener("orientationchange", windowRaz);
+    return () => {
+      window.removeEventListener("resize", windowRaz);
+      window.removeEventListener("orientationchange", windowRaz);
+    };
   });
   const dispatch = useDispatch();
   const BTN = [
@@ -42,22 +46,22 @@ const WindowGame = () => {
       position: "2",
     },
   ];
-  // useEffect(() => {
-  //   const t = setInterval(() => {
-  //     const from = fromEggs();
-  //     dispatch(aggEgg(from));
-  //   }, 1000);
-  //   return () => {
-  //     clearInterval(t);
-  //   };
-  // }, []);
+  useEffect(() => {
+    let t;
+    if (runGame) {
+      t = setInterval(() => {
+        const from = fromEggs();
+        dispatch(aggEgg(from));
+      }, 1000);
+    }
+    return () => {
+      clearInterval(t);
+    };
+  }, [runGame]);
 
   const changePosition = (pos) => {
     dispatch(movePositionPlayer(pos));
   };
-  // if (!owner) {
-  //   return <ChoisePlayer />;
-  // }
 
   return (
     <div className={S.gameWindow}>
@@ -70,6 +74,7 @@ const WindowGame = () => {
           maxWidth: `${document.querySelector("body").clientHeight}px`,
         }}
       >
+        <ButtonControlGameContainer />
         <ChickenContainer />
         <OpenChickenContainer />
         <PlayerContainer />

@@ -1,9 +1,15 @@
 const moveOpen = "MOVE_OPEN";
 const openStart = "OPEN_START";
+const restartEgg = "RESTART_EGG";
 
 export const moveOpenEgg = () => {
   return {
     type: moveOpen,
+  };
+};
+export const restartAllEggs = () => {
+  return {
+    type: restartEgg,
   };
 };
 export const startOpenEgg = (from) => {
@@ -68,6 +74,13 @@ const openChickenReducer = (state = initialState, action) => {
       return {
         ...state,
         [action.from]: [1, ...state[action.from]],
+      };
+    }
+    case "RESTART_EGG": {
+      return {
+        ...state,
+        openChickenPositionLeft: [],
+        openChickenPositionRight: [],
       };
     }
     case "MOVE_OPEN": {

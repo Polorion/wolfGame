@@ -63,13 +63,16 @@ const ChickenContainer = (props) => {
   };
 
   useEffect(() => {
-    const t = setInterval(() => {
-      eggMove();
-    }, 500);
+    let t;
+    if (props.gameIsRun) {
+      t = setInterval(() => {
+        eggMove();
+      }, 500);
+    }
     return () => {
       clearInterval(t);
     };
-  }, []);
+  }, [props.gameIsRun]);
 
   return (
     <div>
@@ -124,6 +127,7 @@ const mapStateToProps = (state) => {
   return {
     positionPlayer: state.player.positionPlayer,
     score: state.player.score,
+    gameIsRun: state.player.gameIsRun,
     missedEggs: state.player.missedEggs,
     chickenTopLeft: state.chicken.chickenTopLeft,
     chickenBottomLeft: state.chicken.chickenBottomLeft,

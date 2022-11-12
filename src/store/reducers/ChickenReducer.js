@@ -1,5 +1,6 @@
 const changeActiveEgg = "CHANGE_ACTIVE_EGG";
 const eggStart = "EGG_START";
+const resetChicken = "RESET_CHICKEN";
 
 export const aggEgg = (from) => {
   return {
@@ -10,6 +11,11 @@ export const aggEgg = (from) => {
 export const moveEgg = () => {
   return {
     type: changeActiveEgg,
+  };
+};
+export const resetAllChicken = () => {
+  return {
+    type: resetChicken,
   };
 };
 const initialState = {
@@ -113,6 +119,15 @@ const chickenReducer = (state = initialState, action) => {
       return {
         ...state,
         [action.from]: [0, ...state[action.from]],
+      };
+    }
+    case "RESET_CHICKEN": {
+      return {
+        ...state,
+        activeEggsTopLeft: [],
+        activeEggsBottomLeft: [],
+        activeEggsTopRight: [],
+        activeEggsBottomRight: [],
       };
     }
     case "CHANGE_ACTIVE_EGG": {
