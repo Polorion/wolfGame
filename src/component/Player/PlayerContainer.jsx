@@ -49,7 +49,7 @@ const PlayerContainer = (props) => {
         positionBasket={"1"}
       />
       <Player
-        left={52}
+        left={55}
         position={props.position}
         img={player().playerR}
         active={setActive().l}

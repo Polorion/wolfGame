@@ -9,7 +9,7 @@
 
 .player {
   position: absolute;
-  height: 20%;
+  height: 45%;
   bottom: 10%;
 
   .img {
@@ -24,9 +24,3 @@
     object-fit: contain;
   }
 }
-//
-//@media screen and (max-width: 450px) {
-//  .player {
-//    width: 40px;
-//  }
-//}
