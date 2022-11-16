@@ -1,12 +1,12 @@
-import WindowGame from "./component/WindowGame/WindowGame";
 import { Provider } from "react-redux";
 import store from "./store/Store";
+import Test from "./component/Test";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <WindowGame />
+        <Test />
       </div>
     </Provider>
   );

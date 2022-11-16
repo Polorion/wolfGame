@@ -16,14 +16,25 @@ import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGame
 
 const WindowGame = () => {
   const ref = useRef();
-  const [h, setH] = useState(window.screen.availWidth);
   const owner = useSelector((state) => state.player.owner);
   const runGame = useSelector((state) => state.player.gameIsRun);
   const speedEggSpawn = useSelector((state) => state.player.speedEggSpawn);
+
+  const [h, setH] = useState(window.screen.availWidth);
   useEffect(() => {
+    const test = document.querySelector(".test");
+    // const testt = document.querySelector('.ttest')
+    console.log(test);
+    console.log(ref.current);
+
+    // window.addEventListener('resize',()=>{
+    //   testt.style.height=`${test.offsetHeight}px`
+    //   console.log(test.offsetHeight)
+    // })
+
     const windowRaz = () => {
       const w = document.querySelector(".container").clientWidth;
-      setH(w * 1);
+      setH(test.offsetHeight);
     };
     window.addEventListener("resize", windowRaz);
     window.addEventListener("orientationchange", windowRaz);
@@ -31,7 +42,7 @@ const WindowGame = () => {
       window.removeEventListener("resize", windowRaz);
       window.removeEventListener("orientationchange", windowRaz);
     };
-  });
+  }, []);
   const dispatch = useDispatch();
   const BTN = [
     {
@@ -71,8 +82,8 @@ const WindowGame = () => {
         ref={ref}
         style={{
           height: `${h}px`,
-          maxHeight: `${500}px`,
-          maxWidth: `${document.querySelector("body").clientHeight}px`,
+
+          width: `100%`,
         }}
       >
         <ButtonControlGameContainer />
