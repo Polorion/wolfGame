@@ -23,6 +23,7 @@ const WindowGame = () => {
   const [h, setH] = useState(window.screen.availWidth);
   useEffect(() => {
     const test = document.querySelector(".test");
+    setH(test.offsetHeight);
     // const testt = document.querySelector('.ttest')
     console.log(test);
     console.log(ref.current);
