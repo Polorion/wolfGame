@@ -24,15 +24,6 @@ const WindowGame = () => {
   useEffect(() => {
     const test = document.querySelector(".test");
     setH(test.offsetHeight);
-    // const testt = document.querySelector('.ttest')
-    console.log(test);
-    console.log(ref.current);
-
-    // window.addEventListener('resize',()=>{
-    //   testt.style.height=`${test.offsetHeight}px`
-    //   console.log(test.offsetHeight)
-    // })
-
     const windowRaz = () => {
       const w = document.querySelector(".container").clientWidth;
       setH(test.offsetHeight);

@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import jumpSound from "../../audio/drums.mp3";
 
 const ButtonControlGame = (props) => {
+  const toggle = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
   const [move, setMove] = useState();
   const [spawn, setSpawn] = useState();
 
@@ -60,6 +68,14 @@ const ButtonControlGame = (props) => {
       >
         игра Б
       </button>{" "}
+      <button
+        style={{ position: "relative", zIndex: "100000" }}
+        onClick={() => {
+          toggle();
+        }}
+      >
+        fullScreen
+      </button>
       {/*<div style={{ position: "relative", zIndex: "99999" }}>*/}
       {/*  <input*/}
       {/*    value={spawn}*/}
