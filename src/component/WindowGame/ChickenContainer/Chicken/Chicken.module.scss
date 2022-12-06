@@ -73,6 +73,7 @@
 .chickenBody {
   width: 100%;
   height: 10%;
+  top: 0;
   position: absolute;
   display: flex;
   &.chickenBodyRight {
@@ -81,6 +82,8 @@
       order: 2;
     }
     .eggsBody {
+      display: flex;
+      flex-direction: column;
       &.right {
         transform: scale(-1, 1);
       }
@@ -91,9 +94,8 @@
     background-color: #fff;
   }
   .eggsBody {
-    width: 20%;
+    width: 50%;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    flex-direction: column;
   }
 }

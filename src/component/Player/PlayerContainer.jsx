@@ -1,8 +1,8 @@
 import * as React from "react";
 import Player from "./Player";
 import { connect, useSelector } from "react-redux";
-import RabbitL from "../../img/Rabbit/orig.png";
-import rabbitR from "../../img/Rabbit/orig3.png";
+import RabbitL from "../../img/player/left.png";
+import rabbitR from "../../img/player/right.png";
 import wolfL from "../../img/wolf/wolf-left.png";
 import wolfR from "../../img/wolf/wolf-right.png";
 
@@ -11,7 +11,7 @@ const PlayerContainer = (props) => {
 
   const player = () => {
     switch (whoOwner) {
-      case "Rabbit":
+      case "empty":
         return {
           playerL: RabbitL,
           playerR: rabbitR,
@@ -24,17 +24,30 @@ const PlayerContainer = (props) => {
     }
     return {};
   };
+  console.log(props.position);
   const setActive = () => {
-    if (props.position === "1" || props.position === "3") {
+    if (props.position === "1") {
       return {
         r: true,
         l: false,
       };
     }
-    if (props.position === "2" || props.position === "4") {
+    if (props.position === "3") {
+      return {
+        rr: true,
+        l: false,
+      };
+    }
+    if (props.position === "4") {
       return {
         r: false,
         l: true,
+      };
+    }
+    if (props.position === "2") {
+      return {
+        r: false,
+        ll: true,
       };
     }
   };
@@ -42,14 +55,28 @@ const PlayerContainer = (props) => {
   return (
     <div>
       <Player
-        left={34}
+        left={39}
+        position={props.position}
+        img={player().playerL}
+        active={setActive().rr}
+        positionBasket={"1"}
+      />{" "}
+      <Player
+        left={14}
         position={props.position}
         img={player().playerL}
         active={setActive().r}
         positionBasket={"1"}
       />
       <Player
-        left={55}
+        left={51}
+        position={props.position}
+        img={player().playerR}
+        active={setActive().ll}
+        positionBasket={"2"}
+      />
+      <Player
+        left={76}
         position={props.position}
         img={player().playerR}
         active={setActive().l}

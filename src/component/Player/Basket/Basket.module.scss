@@ -2,7 +2,8 @@
   width: 50%;
   height: 30%;
   position: absolute;
-  opacity: 0.2;
+  opacity: 1;
+  transform: translateZ(-1px);
   &.active {
     opacity: 1;
   }

@@ -44,10 +44,10 @@ const ChoicePlayer = (props) => {
       <h1 className={S.title}>Выберите Свитер для Кролика</h1>
       <div className={S.t}>
         <Slider {...settings}>
-          {img.map((el) => {
+          {img.map((el, i) => {
             return (
               <Persona
-                key={el.img}
+                key={i}
                 img={el.img}
                 name={el.name}
                 action={changeOwner}

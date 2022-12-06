@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { movePositionPlayer } from "../../store/reducers/PlayerReducer";
 import ChickenContainer from "./ChickenContainer/ChickenContainer";
-import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
 import { aggEgg } from "../../store/reducers/ChickenReducer";
 import { fromEggs } from "../../Helper/CreateFromEggs";
 import { useEffect, useRef, useState } from "react";
@@ -38,16 +37,16 @@ const WindowGame = () => {
   const dispatch = useDispatch();
   const BTN = [
     {
-      position: "3",
-    },
-    {
-      position: "4",
-    },
-    {
       position: "1",
     },
     {
+      position: "3",
+    },
+    {
       position: "2",
+    },
+    {
+      position: "4",
     },
   ];
   useEffect(() => {
@@ -82,7 +81,6 @@ const WindowGame = () => {
           >
             {owner && <ButtonControlGameContainer />}
             <ChickenContainer />
-            <OpenChickenContainer />
             <PlayerContainer />
             <div className={S.buttonBody}>
               {BTN.map((el) => (

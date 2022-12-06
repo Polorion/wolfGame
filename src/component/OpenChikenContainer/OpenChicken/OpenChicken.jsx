@@ -15,7 +15,7 @@ const OpenChicken = (props) => {
         {props.open.map((el, i) => {
           return (
             <div
-              key={el.id}
+              key={i}
               className={`${S.chicken} ${
                 props.openChickenPosition.includes(props.open[i].id) && S.active
               }`}

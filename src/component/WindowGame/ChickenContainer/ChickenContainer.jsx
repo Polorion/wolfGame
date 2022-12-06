@@ -79,28 +79,28 @@ const ChickenContainer = (props) => {
       <div> поймал {score}</div>
       <div> пропустил {missedEggs}</div>
       <Chicken
-        coordinates={{ top: 30 }}
+        coordinates={{ top: 0 }}
         eggs={props.chickenTopLeft}
         activeEggs={props.activeEggsTopLeft}
         positionPlayer={props.positionPlayer}
         left={true}
       />{" "}
       <Chicken
-        coordinates={{ top: 55 }}
+        coordinates={{ top: 25 }}
         eggs={props.chickenBottomLeft}
         activeEggs={props.activeEggsBottomLeft}
         positionPlayer={props.positionPlayer}
         left={true}
       />{" "}
       <Chicken
-        coordinates={{ top: 30 }}
+        coordinates={{ top: 50 }}
         eggs={props.chickenTopRight}
         activeEggs={props.activeEggsTopRight}
         positionPlayer={props.positionPlayer}
         left={false}
       />{" "}
       <Chicken
-        coordinates={{ top: 55 }}
+        coordinates={{ top: 75 }}
         eggs={props.chickenBottomRight}
         activeEggs={props.activeEggsBottomRight}
         positionPlayer={props.positionPlayer}
