@@ -68,31 +68,36 @@ const WindowGame = () => {
   };
 
   return (
-    <div className={S.gameWindow}>
-      <div
-        className={"container"}
-        ref={ref}
-        style={{
-          height: `${h}px`,
+    <div>
+      {owner ? (
+        <div className={S.gameWindow}>
+          <div
+            className={"container"}
+            ref={ref}
+            style={{
+              height: `${h}px`,
 
-          width: `100%`,
-        }}
-      >
-        <ButtonControlGameContainer />
-        <ChickenContainer />
-        <OpenChickenContainer />
-        <PlayerContainer />
-        <div className={S.buttonBody}>
-          {BTN.map((el) => (
-            <MoveButton
-              key={el.position}
-              position={el.position}
-              action={changePosition}
-            />
-          ))}
+              width: `100%`,
+            }}
+          >
+            {owner && <ButtonControlGameContainer />}
+            <ChickenContainer />
+            <OpenChickenContainer />
+            <PlayerContainer />
+            <div className={S.buttonBody}>
+              {BTN.map((el) => (
+                <MoveButton
+                  key={el.position}
+                  position={el.position}
+                  action={changePosition}
+                />
+              ))}
+            </div>
+          </div>
         </div>
+      ) : (
         <ChoisePlayer owner={owner} />
-      </div>
+      )}
     </div>
   );
 };
