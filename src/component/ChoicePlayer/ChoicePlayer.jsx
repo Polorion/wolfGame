@@ -31,12 +31,17 @@ const ChoicePlayer = (props) => {
   };
   var settings = {
     arrows: true,
+    className: "center",
     infinite: true,
+    centerMode: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    centerPadding: "0px",
+    swipe: false,
   };
   return (
     <div className={S.q}>
+      <h1 className={S.title}>Выберите Свитер для Кролика</h1>
       <div className={S.t}>
         <Slider {...settings}>
           {img.map((el) => {
