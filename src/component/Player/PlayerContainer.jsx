@@ -3,8 +3,19 @@ import Player from "./Player";
 import { connect, useSelector } from "react-redux";
 import RabbitL from "../../img/player/left.png";
 import rabbitR from "../../img/player/right.png";
-import wolfL from "../../img/wolf/wolf-left.png";
-import wolfR from "../../img/wolf/wolf-right.png";
+import RabbitLRed from "../../img/player/leftRed.png";
+import rabbitRRed from "../../img/player/rightRed.png";
+import RabbitLBrown from "../../img/player/leftBrown.png";
+import rabbitRBrown from "../../img/player/rightBrown.png";
+import RabbitLBlue from "../../img/player/leftBlue.png";
+import rabbitRBlue from "../../img/player/rightBlue.png";
+import RabbitLYellow from "../../img/player/leftYellow.png";
+import rabbitRYellow from "../../img/player/rightYellow.png";
+import bruxx from "../../img/player/1.png";
+import empty from "../../img/player/2.png";
+import italy from "../../img/player/3.png";
+import goose from "../../img/player/4.png";
+import hitch from "../../img/player/5.png";
 
 const PlayerContainer = (props) => {
   const whoOwner = useSelector((state) => state.player.owner);
@@ -16,15 +27,29 @@ const PlayerContainer = (props) => {
           playerL: RabbitL,
           playerR: rabbitR,
         };
-      case "Wolf":
+      case "bruxx":
         return {
-          playerL: wolfL,
-          playerR: wolfR,
+          playerL: RabbitLYellow,
+          playerR: rabbitRYellow,
+        };
+      case "italy":
+        return {
+          playerL: RabbitLRed,
+          playerR: rabbitRRed,
+        };
+      case "goose":
+        return {
+          playerL: RabbitLBrown,
+          playerR: rabbitRBrown,
+        };
+      case "hitch":
+        return {
+          playerL: RabbitLBlue,
+          playerR: rabbitRBlue,
         };
     }
     return {};
   };
-  console.log(props.position);
   const setActive = () => {
     if (props.position === "1") {
       return {

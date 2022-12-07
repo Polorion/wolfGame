@@ -29,7 +29,7 @@ const ButtonControlGameContainer = (props) => {
     restart();
   };
   return (
-    <div>
+    <div style={{ position: "absolute", opacity: 0.5 }}>
       <ButtonControlGame
         changeOwner={changeOwner}
         changeRunGame={changeRunGame}

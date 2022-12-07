@@ -4,6 +4,8 @@ import { connect, useSelector } from "react-redux";
 import { aggEgg, moveEgg } from "../../../store/reducers/ChickenReducer";
 import { useEffect, useMemo, useRef } from "react";
 import { missedEggs, upScore } from "../../../store/reducers/PlayerReducer";
+import S from "./Chicken/Chicken.module.scss";
+import scoreImg from "../../../img/player/score.png";
 import {
   moveOpenEgg,
   startOpenEgg,
@@ -31,32 +33,32 @@ const ChickenContainer = (props) => {
   const eggMove = () => {
     props.moveEgg();
     props.moveOpenEgg();
-    if (refPosition.current === "3" && refEggsLT.current.includes(5)) {
+    if (refPosition.current === "1" && refEggsLT.current.includes(5)) {
       props.upScore();
     }
-    if (refEggsLT.current.includes(5) && refPosition.current !== "3") {
+    if (refEggsLT.current.includes(5) && refPosition.current !== "1") {
       props.startOpenEgg("openChickenPositionLeft");
       props.missedEggs();
     }
-    if (refPosition.current === "1" && refEggsLB.current.includes(5)) {
+    if (refPosition.current === "3" && refEggsLB.current.includes(5)) {
       props.upScore();
     }
-    if (refEggsLB.current.includes(5) && refPosition.current !== "1") {
+    if (refEggsLB.current.includes(5) && refPosition.current !== "3") {
       props.startOpenEgg("openChickenPositionLeft");
       props.missedEggs();
     }
 
-    if (refPosition.current === "4" && refEggsRT.current.includes(5)) {
+    if (refPosition.current === "2" && refEggsRT.current.includes(5)) {
       props.upScore();
     }
-    if (refEggsRT.current.includes(5) && refPosition.current !== "4") {
+    if (refEggsRT.current.includes(5) && refPosition.current !== "2") {
       props.startOpenEgg("openChickenPositionRight");
       props.missedEggs();
     }
-    if (refPosition.current === "2" && refEggsRB.current.includes(5)) {
+    if (refPosition.current === "4" && refEggsRB.current.includes(5)) {
       props.upScore();
     }
-    if (refEggsRB.current.includes(5) && refPosition.current !== "2") {
+    if (refEggsRB.current.includes(5) && refPosition.current !== "4") {
       props.startOpenEgg("openChickenPositionRight");
       props.missedEggs();
     }
@@ -76,8 +78,13 @@ const ChickenContainer = (props) => {
 
   return (
     <div>
-      <div> поймал {score}</div>
-      <div> пропустил {missedEggs}</div>
+      <div className={S.score}>
+        {" "}
+        <p>{score}</p>{" "}
+        <div className={S.img}>
+          <img src={scoreImg} alt="" />
+        </div>
+      </div>
       <Chicken
         coordinates={{ top: 0 }}
         eggs={props.chickenTopLeft}
