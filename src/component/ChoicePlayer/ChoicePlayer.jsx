@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import hitch from "../../img/player/5.png";
 import Slider from "react-slick";
+import arrow from "../../img/player/arrow.png";
 
 import Persona from "./Persona";
 import { useDispatch } from "react-redux";
@@ -29,6 +30,46 @@ const ChoicePlayer = (props) => {
   const changeOwner = (name) => {
     dispatch(choiceOwner(name));
   };
+  function SampleNextArrow(props) {
+    const { onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        style={{
+          position: "absolute",
+          top: `50%`,
+          right: "-100px",
+        }}
+      >
+        <button
+          className={S.arrow}
+          style={{ transform: "rotate(180deg)" }}
+          action={onClick}
+          title={"Дальше"}
+        >
+          <img src={arrow} alt="" />
+        </button>
+      </div>
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        style={{
+          position: "absolute",
+          top: `50%`,
+          left: "-100px",
+        }}
+      >
+        <button className={S.arrow} action={onClick} title={"Назад"}>
+          <img src={arrow} alt="" />
+        </button>
+      </div>
+    );
+  }
   var settings = {
     arrows: true,
     className: "center",
@@ -38,6 +79,8 @@ const ChoicePlayer = (props) => {
     slidesToScroll: 1,
     centerPadding: "0px",
     swipe: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
   return (
     <div className={S.q}>

@@ -1,0 +1,214 @@
+.body {
+  background-image: url(../../img/start/fon.png);
+  background-size: cover;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+.rabbitTop {
+  transition: all 3s ease;
+  position: absolute;
+  right: 10%;
+  width: 15%;
+  height: 10%;
+  top: -2%;
+  &.active {
+    top: -100% !important;
+  }
+
+  .topF {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    right: 40%;
+    z-index: 0;
+
+    img {
+      width: 50%;
+    }
+  }
+  .topR {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
+.rabbitBotton {
+  transition: all 3s ease;
+  position: absolute;
+  left: 10%;
+  width: 15%;
+  height: 10%;
+  bottom: 40%;
+  &.active {
+    bottom: -100% !important;
+  }
+
+  .BottonF {
+    width: 100%;
+    position: absolute;
+    top: 300%;
+    right: 40%;
+    z-index: 0;
+
+    img {
+      width: 50%;
+    }
+  }
+  .BottonR {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.boxes {
+  transition: all 3s ease;
+  position: absolute;
+  right: 10%;
+  width: 15%;
+  height: 10%;
+  bottom: 40%;
+  &.active {
+    bottom: -100% !important;
+  }
+
+  .fruitBox {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    z-index: 2;
+
+    img {
+      width: 100%;
+    }
+  }
+  .boxes {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
+.lamp {
+  transition: all 3s ease;
+  position: absolute;
+  left: 0%;
+  width: 60%;
+  height: 10%;
+  top: -5%;
+  &.active {
+    top: -100% !important;
+  }
+
+  .lamp {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
+.StartGame {
+  color: white;
+
+  position: absolute;
+  top: 65%;
+  left: 40%;
+  font-size: 2vw;
+  border-radius: 20px;
+  border: none;
+  background-color: #e07651;
+  padding: 1% 3%;
+}
+.title {
+  color: white;
+  max-width: 50%;
+  text-align: center;
+  transition: opacity 2s ease;
+  position: absolute;
+  top: 40%;
+  font-size: 3vw;
+  left: 25%;
+  opacity: 1;
+  &.active {
+    opacity: 0;
+  }
+}
+
+.dead {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: -15%;
+
+  animation: 7s linear slidein;
+
+  .dead {
+    animation-duration: 6s;
+    animation-delay: 2s;
+    animation-name: slideine;
+    background-image: url(../../img/start/dead.png);
+    background-repeat: no-repeat;
+    background-size: 70%;
+    z-index: 1;
+    position: absolute;
+    width: 50%;
+    img {
+      width: 70%;
+    }
+  }
+}
+@keyframes slidein {
+  0% {
+    left: -10%;
+    bottom: -5%;
+    transform: rotate(-18deg);
+  }
+  50% {
+    left: 48%;
+    bottom: -15%;
+  }
+  100% {
+    left: 100%;
+    bottom: -22%;
+    transform: rotate(8deg);
+  }
+
+  //100% {
+  //  left: 45%;
+  //  transform: rotate(0deg);
+  //  bottom: 90%;
+  //}
+}
+@keyframes slideine {
+  0% {
+    background-image: url(../../img/start/dead.png);
+  }
+  20% {
+    background-image: url(../../img/start/openDead.png);
+  }
+  100% {
+    background-image: url(../../img/start/openDead.png);
+  }
+
+  //100% {
+  //  left: 45%;
+  //  transform: rotate(0deg);
+  //  bottom: 90%;
+  //}
+}
