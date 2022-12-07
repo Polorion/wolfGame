@@ -39,17 +39,19 @@ const ButtonControlGame = (props) => {
       >
         <FullScreen />
       </button>
-      <button
-        style={{ position: "relative", zIndex: "100000" }}
-        className={S.full}
-        onClick={() => {
-          props.restart();
-          dispatch(resetTimeGame());
-          props.changeOwner();
-        }}
-      >
-        <Restart />
-      </button>{" "}
+      {!props.onliFull && (
+        <button
+          style={{ position: "relative", zIndex: "100000" }}
+          className={S.full}
+          onClick={() => {
+            props.restart();
+            dispatch(resetTimeGame());
+            props.changeOwner();
+          }}
+        >
+          <Restart />
+        </button>
+      )}{" "}
       {/*<div style={{ position: "relative", zIndex: "99999" }}>*/}
       {/*  <input*/}
       {/*    value={spawn}*/}

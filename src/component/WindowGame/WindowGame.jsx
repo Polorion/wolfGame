@@ -19,6 +19,7 @@ const WindowGame = () => {
   const owner = useSelector((state) => state.player.owner);
   const runGame = useSelector((state) => state.player.gameIsRun);
   const speedEggSpawn = useSelector((state) => state.player.speedEggSpawn);
+  const gameOver = useSelector((state) => state.player.gameOver);
 
   const [h, setH] = useState(window.screen.availWidth);
   useEffect(() => {
@@ -96,7 +97,7 @@ const WindowGame = () => {
           </div>
         </div>
       ) : (
-        <ChoisePlayer owner={owner} />
+        <ChoisePlayer onliFull={true} owner={owner} />
       )}
     </div>
   );

@@ -1,8 +1,9 @@
 import * as React from "react";
 import ButtonControlGame from "./ButtonControlGame";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import {
   choiceOwner,
+  gameOver,
   resetAllScore,
   runGame,
   setSpeedMoveEgg,
@@ -10,8 +11,16 @@ import {
 } from "../../store/reducers/PlayerReducer";
 import { resetAllChicken } from "../../store/reducers/ChickenReducer";
 import { restartAllEggs } from "../../store/reducers/OpenChickeReducer";
+import { useEffect } from "react";
 
 const ButtonControlGameContainer = (props) => {
+  const gameover = useSelector((state) => state.player.missedEggs);
+  useEffect(() => {
+    if (gameover > 0) {
+      props.runGame();
+      props.gameOver();
+    }
+  }, [gameover]);
   const changeOwner = () => {
     props.choiceOwner(null);
   };
@@ -31,8 +40,11 @@ const ButtonControlGameContainer = (props) => {
     restart();
   };
   return (
-    <div style={{ position: "absolute", zIndex: "1000" }}>
+    <div
+      style={{ position: "absolute", zIndex: "1000", top: "0%", left: "0%" }}
+    >
       <ButtonControlGame
+        onliFull={props.onliFull}
         changeOwner={changeOwner}
         changeRunGame={changeRunGame}
         restart={restart}
@@ -57,4 +69,5 @@ export default connect(mapStateToProps, {
   restartAllEggs,
   setSpeedSpawnEdd,
   setSpeedMoveEgg,
+  gameOver,
 })(ButtonControlGameContainer);

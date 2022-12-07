@@ -9,10 +9,16 @@ const setSpeedMove = "SET_SPEED_MOVE";
 const startedGame = "STARTED_GAME";
 const timeGameSet = "TIME_GAME_SET";
 const timeGameReset = "TIME_GAME_RESET";
+const setGemaOver = "SET_GAME_OVER";
 export const movePositionPlayer = (position) => {
   return {
     type: ChangePositionPlayer,
     position,
+  };
+};
+export const gameOver = () => {
+  return {
+    type: setGemaOver,
   };
 };
 export const setGameTime = () => {
@@ -76,14 +82,20 @@ const initialState = {
   missedEggs: 0,
   owner: null,
   gameIsRun: false,
-  speedEggSpawn: 300,
-  speedEggMove: 300,
+  speedEggSpawn: 700,
+  speedEggMove: 700,
   typeGame: 1,
   timeIsGame: 2 * 60,
+  gameOver: false,
 };
 
 const playerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "SET_GAME_OVER":
+      return {
+        ...state,
+        gameOver: true,
+      };
     case "TIME_GAME_RESET":
       return {
         ...state,

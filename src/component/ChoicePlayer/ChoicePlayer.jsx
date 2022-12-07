@@ -18,6 +18,7 @@ import {
   runGame,
 } from "../../store/reducers/PlayerReducer";
 import { useRef } from "react";
+import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
 
 const img = [
   { img: bruxx, name: "bruxx" },
@@ -89,6 +90,7 @@ const ChoicePlayer = (props) => {
   };
   return (
     <div className={S.q}>
+      <ButtonControlGameContainer onliFull={props.onliFull} />
       <div className={S.t}>
         <h1 className={S.title}>Выберите Свитер для Кролика</h1>
         <Slider {...settings}>

@@ -11,23 +11,28 @@ import deadopen from "../../img/start/openDead.png";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { gameIsStarted } from "../../store/reducers/PlayerReducer";
+import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
 
 const StartWindow = () => {
   const [press, setPress] = useState(false);
   const [timer, setTimer] = useState(false);
-  const [buttonIs, setBittonIs] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      setTimer(true);
-    }, 3000);
-    setTimeout(() => {
-      setBittonIs(true);
-    }, 5000);
-  }, []);
+    if (press) {
+      setTimeout(() => {
+        setTimer(true);
+      }, 3000);
+      if (press) {
+        setTimeout(() => {
+          dispatch(gameIsStarted());
+        }, 7000);
+      }
+    }
+  }, [press]);
   return (
     <div className={S.body}>
+      <ButtonControlGameContainer onliFull={true} />
       <h1 className={`${S.title}  ${press && S.active}`}>
         Добро пожаловать в игру от Italy&co. Собирайте Мандарины и обменивайте{" "}
         их на бонусы
@@ -86,16 +91,6 @@ const StartWindow = () => {
         <button
           onClick={() => {
             setPress((prevState) => !prevState);
-          }}
-          className={S.StartGame}
-        >
-          Начать игру
-        </button>
-      )}
-      {buttonIs && (
-        <button
-          onClick={() => {
-            dispatch(gameIsStarted());
           }}
           className={S.StartGame}
         >
