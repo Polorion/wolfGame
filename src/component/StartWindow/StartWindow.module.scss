@@ -190,7 +190,7 @@
     &:nth-child(1) {
       top: 0%;
       left: 20%;
-      animation: 4s 3s linear downFour;
+      animation: 4s 3s linear down;
     }
     &:nth-child(2) {
       animation-delay: 2s;
@@ -208,7 +208,7 @@
       animation-delay: 2s;
       top: -10%;
       left: 50%;
-      animation: 4s 4.5s linear downSec;
+      animation: 4s 4.5s linear downFour;
     }
     width: 5%;
 

@@ -2,6 +2,10 @@ import * as React from "react";
 import S from "./ButtonControlGame.module.scss";
 import { useRef, useState } from "react";
 import jumpSound from "../../audio/drums.mp3";
+import { resetTimeGame } from "../../store/reducers/PlayerReducer";
+import { useDispatch } from "react-redux";
+import { ReactComponent as FullScreen } from "../../img/fullscreen.svg";
+import { ReactComponent as Restart } from "../../img/restar.svg";
 
 const ButtonControlGame = (props) => {
   const toggle = () => {
@@ -11,9 +15,7 @@ const ButtonControlGame = (props) => {
       document.exitFullscreen();
     }
   };
-
-  const [move, setMove] = useState();
-  const [spawn, setSpawn] = useState();
+  const dispatch = useDispatch();
 
   const audioRef = useRef();
 
@@ -24,58 +26,30 @@ const ButtonControlGame = (props) => {
   const stopSound = () => {
     audioRef.current.pause();
   };
-  const stopRestart = () => {
-    audioRef.current.fastSeek(0);
-  };
 
   return (
     <div>
       <audio loop="loop" ref={audioRef} src={jumpSound}></audio>
       <button
-        style={{ position: "relative", zIndex: "100000" }}
-        onClick={props.changeOwner}
-      >
-        смена персонажа
-      </button>{" "}
-      <button
-        style={{ position: "relative", zIndex: "100000" }}
-        onClick={props.restart}
-      >
-        рестарт
-      </button>{" "}
-      <button
-        style={{ position: "relative", zIndex: "100000" }}
-        onClick={() => {
-          props.changeRunGame();
-          props.gameIsRun ? stopSound() : playSound();
-        }}
-      >
-        {props.gameIsRun ? "пауза" : "начать игру"}
-      </button>
-      <button
-        style={{ position: "relative", zIndex: "100000" }}
-        onClick={() => {
-          props.typeGame(1000, 300);
-        }}
-      >
-        игра А
-      </button>{" "}
-      <button
-        style={{ position: "relative", zIndex: "100000" }}
-        onClick={() => {
-          props.typeGame(200, 100);
-        }}
-      >
-        игра Б
-      </button>{" "}
-      <button
+        className={S.full}
         style={{ position: "relative", zIndex: "100000" }}
         onClick={() => {
           toggle();
         }}
       >
-        fullScreen
+        <FullScreen />
       </button>
+      <button
+        style={{ position: "relative", zIndex: "100000" }}
+        className={S.full}
+        onClick={() => {
+          props.restart();
+          dispatch(resetTimeGame());
+          props.changeOwner();
+        }}
+      >
+        <Restart />
+      </button>{" "}
       {/*<div style={{ position: "relative", zIndex: "99999" }}>*/}
       {/*  <input*/}
       {/*    value={spawn}*/}

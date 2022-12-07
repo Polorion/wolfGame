@@ -12,6 +12,7 @@ import { fromEggs } from "../../Helper/CreateFromEggs";
 import { useEffect, useRef, useState } from "react";
 import ChoisePlayer from "../ChoicePlayer/ChoicePlayer";
 import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
+import Timer from "../Timer/Timer";
 
 const WindowGame = () => {
   const ref = useRef();
@@ -80,6 +81,7 @@ const WindowGame = () => {
             }}
           >
             {owner && <ButtonControlGameContainer />}
+            <Timer />
             <ChickenContainer />
             <PlayerContainer />
             <div className={S.buttonBody}>

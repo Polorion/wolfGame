@@ -22,6 +22,8 @@ const ButtonControlGameContainer = (props) => {
     props.resetAllScore();
     props.resetAllChicken();
     props.restartAllEggs();
+    props.choiceOwner(null);
+    props.runGame();
   };
   const typeGame = (spawn, speed) => {
     props.setSpeedSpawnEdd(spawn);
@@ -29,7 +31,7 @@ const ButtonControlGameContainer = (props) => {
     restart();
   };
   return (
-    <div style={{ position: "absolute", opacity: 0.5, zIndex: "1000" }}>
+    <div style={{ position: "absolute", zIndex: "1000" }}>
       <ButtonControlGame
         changeOwner={changeOwner}
         changeRunGame={changeRunGame}

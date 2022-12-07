@@ -5,3 +5,21 @@
     justify-content: space-between;
   }
 }
+
+.full {
+  background-color: transparent;
+  border: none;
+  width: 10%;
+  margin-right: 40%;
+  height: 10%;
+  margin-top: 3%;
+
+  svg {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    path {
+      fill: white;
+    }
+  }
+}

@@ -12,7 +12,11 @@ import arrow from "../../img/player/arrow.png";
 
 import Persona from "./Persona";
 import { useDispatch } from "react-redux";
-import { choiceOwner } from "../../store/reducers/PlayerReducer";
+import {
+  choiceOwner,
+  gameIsStarted,
+  runGame,
+} from "../../store/reducers/PlayerReducer";
 import { useRef } from "react";
 
 const img = [
@@ -28,6 +32,7 @@ const ChoicePlayer = (props) => {
   const dispatch = useDispatch();
 
   const changeOwner = (name) => {
+    dispatch(runGame());
     dispatch(choiceOwner(name));
   };
   function SampleNextArrow(props) {
