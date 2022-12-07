@@ -14,7 +14,6 @@ const StartWindow = () => {
   const [press, setPress] = useState(false);
   const [timer, setTimer] = useState(false);
 
-  console.log(timer);
   useEffect(() => {
     setTimeout(() => {
       setTimer(true);
@@ -55,11 +54,27 @@ const StartWindow = () => {
           <img src={lamp} alt="" />
         </div>
       </div>{" "}
-      {!press && (
+      {press && (
         <div className={`${S.dead} ${press && S.active}`}>
           <img className={S.img} src={timer ? deadopen : dead} alt="" />
         </div>
       )}{" "}
+      {press && (
+        <div className={S.fruits}>
+          <div className={S.manarin}>
+            <img src={Fruit} alt="" />
+          </div>{" "}
+          <div className={S.manarin}>
+            <img src={Fruit} alt="" />
+          </div>{" "}
+          <div className={S.manarin}>
+            <img src={Fruit} alt="" />
+          </div>{" "}
+          <div className={S.manarin}>
+            <img src={Fruit} alt="" />
+          </div>{" "}
+        </div>
+      )}
       <button
         onClick={() => {
           setPress((prevState) => !prevState);
