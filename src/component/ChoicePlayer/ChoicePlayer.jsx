@@ -41,8 +41,8 @@ const ChoicePlayer = (props) => {
   };
   return (
     <div className={S.q}>
-      <h1 className={S.title}>Выберите Свитер для Кролика</h1>
       <div className={S.t}>
+        <h1 className={S.title}>Выберите Свитер для Кролика</h1>
         <Slider {...settings}>
           {img.map((el, i) => {
             return (
