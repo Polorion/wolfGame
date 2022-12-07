@@ -152,25 +152,13 @@
 
 .dead {
   position: absolute;
-  width: 60%;
+  width: 30%;
   height: 100%;
   left: -15%;
 
   animation: 7s linear slidein;
-
-  .dead {
-    animation-duration: 6s;
-    animation-delay: 1s;
-    animation-name: slideine;
-    background-image: url(../../img/start/openDead.png);
-    background-repeat: no-repeat;
-    background-size: 70%;
-    z-index: 1;
-    position: absolute;
-    width: 50%;
-    img {
-      width: 70%;
-    }
+  .img {
+    width: 100%;
   }
 }
 @keyframes slidein {

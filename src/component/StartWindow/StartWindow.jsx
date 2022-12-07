@@ -7,11 +7,19 @@ import boxes from "../../img/start/boxes.png";
 import fruitBox from "../../img/start/fruitInBoxes.png";
 import lamp from "../../img/start/lamp.png";
 import dead from "../../img/start/dead.png";
-import { useState } from "react";
+import deadopen from "../../img/start/openDead.png";
+import { useEffect, useState } from "react";
 
 const StartWindow = () => {
   const [press, setPress] = useState(false);
   const [timer, setTimer] = useState(false);
+
+  console.log(timer);
+  useEffect(() => {
+    setTimeout(() => {
+      setTimer(true);
+    }, 3000);
+  }, []);
   return (
     <div className={S.body}>
       <h1 className={`${S.title}  ${press && S.active}`}>
@@ -44,21 +52,16 @@ const StartWindow = () => {
       </div>
       <div className={`${S.lamp} ${press && S.active}`}>
         <div className={S.lamp}>
-          <img
-            style={{ backgroundImage: "url(../../img/start/openDead.png)" }}
-            src={lamp}
-            alt=""
-          />
+          <img src={lamp} alt="" />
         </div>
       </div>{" "}
-      {press && (
+      {!press && (
         <div className={`${S.dead} ${press && S.active}`}>
-          <div className={S.dead}>{/*<img src={dead} alt="" />*/}</div>
+          <img className={S.img} src={timer ? deadopen : dead} alt="" />
         </div>
-      )}
+      )}{" "}
       <button
         onClick={() => {
-          console.log(press);
           setPress((prevState) => !prevState);
         }}
         className={S.StartGame}
