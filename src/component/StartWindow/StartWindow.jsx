@@ -75,14 +75,16 @@ const StartWindow = () => {
           </div>{" "}
         </div>
       )}
-      <button
-        onClick={() => {
-          setPress((prevState) => !prevState);
-        }}
-        className={S.StartGame}
-      >
-        Начать игру
-      </button>
+      {!press && (
+        <button
+          onClick={() => {
+            setPress((prevState) => !prevState);
+          }}
+          className={S.StartGame}
+        >
+          Начать игру
+        </button>
+      )}
     </div>
   );
 };
