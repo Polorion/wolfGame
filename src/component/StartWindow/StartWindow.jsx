@@ -44,7 +44,11 @@ const StartWindow = () => {
       </div>
       <div className={`${S.lamp} ${press && S.active}`}>
         <div className={S.lamp}>
-          <img src={lamp} alt="" />
+          <img
+            style={{ backgroundImage: "url(../../img/start/openDead.png)" }}
+            src={lamp}
+            alt=""
+          />
         </div>
       </div>{" "}
       {press && (
