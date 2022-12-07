@@ -9,15 +9,22 @@ import lamp from "../../img/start/lamp.png";
 import dead from "../../img/start/dead.png";
 import deadopen from "../../img/start/openDead.png";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { gameIsStarted } from "../../store/reducers/PlayerReducer";
 
 const StartWindow = () => {
   const [press, setPress] = useState(false);
   const [timer, setTimer] = useState(false);
+  const [buttonIs, setBittonIs] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
       setTimer(true);
     }, 3000);
+    setTimeout(() => {
+      setBittonIs(true);
+    }, 5000);
   }, []);
   return (
     <div className={S.body}>
@@ -79,6 +86,16 @@ const StartWindow = () => {
         <button
           onClick={() => {
             setPress((prevState) => !prevState);
+          }}
+          className={S.StartGame}
+        >
+          Начать игру
+        </button>
+      )}
+      {buttonIs && (
+        <button
+          onClick={() => {
+            dispatch(gameIsStarted());
           }}
           className={S.StartGame}
         >

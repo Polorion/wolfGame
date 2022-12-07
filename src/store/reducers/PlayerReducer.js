@@ -6,6 +6,7 @@ const gameIsRun = "GAME_IS_RUN";
 const resetScore = "RESET_SCORE";
 const setSpawn = "SET_SPAWN";
 const setSpeedMove = "SET_SPEED_MOVE";
+const startedGame = "STARTED_GAME";
 export const movePositionPlayer = (position) => {
   return {
     type: ChangePositionPlayer,
@@ -34,6 +35,11 @@ export const runGame = () => {
     type: gameIsRun,
   };
 };
+export const gameIsStarted = () => {
+  return {
+    type: startedGame,
+  };
+};
 export const choiceOwner = (owner) => {
   return {
     type: setOwner,
@@ -52,6 +58,7 @@ export const missedEggs = () => {
 };
 
 const initialState = {
+  gameIsStart: false,
   positionPlayer: "1",
   score: 0,
   missedEggs: 0,
@@ -64,6 +71,11 @@ const initialState = {
 
 const playerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "STARTED_GAME":
+      return {
+        ...state,
+        gameIsStart: true,
+      };
     case "CHANGE_POSITION_PLAYER":
       return {
         ...state,
