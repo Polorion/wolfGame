@@ -160,9 +160,9 @@
 
   .dead {
     animation-duration: 6s;
-    animation-delay: 2s;
+    animation-delay: 1s;
     animation-name: slideine;
-    background-image: url(../../img/start/dead.png);
+    background-image: url(../../img/start/openDead.png);
     background-repeat: no-repeat;
     background-size: 70%;
     z-index: 1;
@@ -197,7 +197,7 @@
 }
 @keyframes slideine {
   0% {
-    background-image: url(../../img/start/openDead.png);
+    background-image: url(../../img/start/dead.png);
   }
   20% {
     background-image: url(../../img/start/openDead.png);
