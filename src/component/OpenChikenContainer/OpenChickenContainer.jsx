@@ -1,37 +1,37 @@
 import * as React from "react";
 import S from "./OpenChicken/OpenChicken.module.scss";
 import { connect, useSelector } from "react-redux";
-import mandariImg from "../../img/player/fruit.png";
+import { ReactComponent as Mandarin } from "../../img/mandar.svg";
 
 const OpenChickenContainer = (props) => {
   const mandarin = useSelector((state) => state.openChicken.madarin);
-  console.log(mandarin);
+
   return (
     <div>
       <div
-        className={`${S.img} ${mandarin === 1 && S.active}`}
+        className={`${S.img} ${S.one} ${mandarin === 1 && S.active}`}
         style={{ bottom: "0%", left: "10%", position: "absolute" }}
       >
-        <img src={mandariImg} alt="" />
+        <Mandarin />
       </div>
       )
       <div
-        className={`${S.img} ${mandarin === 2 && S.active}`}
+        className={`${S.img} ${S.two} ${mandarin === 2 && S.active}`}
         style={{ bottom: "0%", left: "35%", position: "absolute" }}
       >
-        <img src={mandariImg} alt="" />
+        <Mandarin />
       </div>
       <div
-        className={`${S.img} ${mandarin === 3 && S.active}`}
+        className={`${S.img} ${S.three} ${mandarin === 3 && S.active}`}
         style={{ bottom: "0%", left: "60%", position: "absolute" }}
       >
-        <img src={mandariImg} alt="" />
+        <Mandarin />
       </div>
       <div
-        className={`${S.img} ${mandarin === 4 && S.active}`}
+        className={`${S.img} ${S.four} ${mandarin === 4 && S.active}`}
         style={{ bottom: "0%", left: "85%", position: "absolute" }}
       >
-        <img src={mandariImg} alt="" />
+        <Mandarin />
       </div>
     </div>
   );
