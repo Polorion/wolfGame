@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import ChoisePlayer from "../ChoicePlayer/ChoicePlayer";
 import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
 import Timer from "../Timer/Timer";
+import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
 
 const WindowGame = () => {
   const ref = useRef();
@@ -85,6 +86,7 @@ const WindowGame = () => {
             <Timer />
             <ChickenContainer />
             <PlayerContainer />
+            <OpenChickenContainer />
             <div className={S.buttonBody}>
               {BTN.map((el) => (
                 <MoveButton

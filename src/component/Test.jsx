@@ -26,7 +26,7 @@ const Test = () => {
       ></audio>
 
       <div className={"test"}>
-        {isStarted ? <WindowGame /> : <StartWindow playSound={playSound} />}
+        <WindowGame />
       </div>
     </>
   );

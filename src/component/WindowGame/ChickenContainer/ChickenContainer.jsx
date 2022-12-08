@@ -37,14 +37,15 @@ const ChickenContainer = (props) => {
       props.upScore();
     }
     if (refEggsLT.current.includes(5) && refPosition.current !== "1") {
-      props.startOpenEgg("openChickenPositionLeft");
+      props.startOpenEgg({ type: "openChickenPositionLeft", chiken: 1 });
       props.missedEggs();
     }
     if (refPosition.current === "3" && refEggsLB.current.includes(5)) {
       props.upScore();
     }
     if (refEggsLB.current.includes(5) && refPosition.current !== "3") {
-      props.startOpenEgg("openChickenPositionLeft");
+      props.startOpenEgg({ type: "openChickenPositionLeft", chiken: 2 });
+
       props.missedEggs();
     }
 
@@ -52,14 +53,16 @@ const ChickenContainer = (props) => {
       props.upScore();
     }
     if (refEggsRT.current.includes(5) && refPosition.current !== "2") {
-      props.startOpenEgg("openChickenPositionRight");
+      props.startOpenEgg({ type: "openChickenPositionRight", chiken: 3 });
+
       props.missedEggs();
     }
     if (refPosition.current === "4" && refEggsRB.current.includes(5)) {
       props.upScore();
     }
     if (refEggsRB.current.includes(5) && refPosition.current !== "4") {
-      props.startOpenEgg("openChickenPositionRight");
+      props.startOpenEgg({ type: "openChickenPositionRight", chiken: 4 });
+
       props.missedEggs();
     }
   };

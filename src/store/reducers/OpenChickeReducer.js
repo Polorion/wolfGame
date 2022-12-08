@@ -1,10 +1,16 @@
 const moveOpen = "MOVE_OPEN";
 const openStart = "OPEN_START";
 const restartEgg = "RESTART_EGG";
+const setMandarin = "SET_MANDARIN";
 
 export const moveOpenEgg = () => {
   return {
     type: moveOpen,
+  };
+};
+export const refreshOpenMandarin = () => {
+  return {
+    type: setMandarin,
   };
 };
 export const restartAllEggs = () => {
@@ -66,14 +72,23 @@ const initialState = {
     },
   ],
   openChickenPositionRight: [],
+  madarin: null,
 };
 
 const openChickenReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "SET_MANDARIN": {
+      return {
+        ...state,
+
+        madarin: null,
+      };
+    }
     case "OPEN_START": {
       return {
         ...state,
-        [action.from]: [1, ...state[action.from]],
+        [action.from.type]: [1, ...state[action.from.type]],
+        madarin: action.from.chiken,
       };
     }
     case "RESTART_EGG": {
