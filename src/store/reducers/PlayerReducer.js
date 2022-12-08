@@ -16,9 +16,10 @@ export const movePositionPlayer = (position) => {
     position,
   };
 };
-export const gameOver = () => {
+export const gameOver = (boolean) => {
   return {
     type: setGemaOver,
+    boolean,
   };
 };
 export const setGameTime = () => {
@@ -48,9 +49,10 @@ export const resetAllScore = () => {
     type: resetScore,
   };
 };
-export const runGame = () => {
+export const runGame = (bollean) => {
   return {
     type: gameIsRun,
+    bollean,
   };
 };
 export const gameIsStarted = () => {
@@ -94,7 +96,7 @@ const playerReducer = (state = initialState, action) => {
     case "SET_GAME_OVER":
       return {
         ...state,
-        gameOver: true,
+        gameOver: action.boolean,
       };
     case "TIME_GAME_RESET":
       return {
@@ -130,7 +132,7 @@ const playerReducer = (state = initialState, action) => {
     case "GAME_IS_RUN":
       return {
         ...state,
-        gameIsRun: !state.gameIsRun,
+        gameIsRun: action.bollean,
       };
     case "SET_SCORE":
       return {

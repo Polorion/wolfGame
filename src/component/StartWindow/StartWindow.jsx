@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { gameIsStarted } from "../../store/reducers/PlayerReducer";
 import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
 
-const StartWindow = () => {
+const StartWindow = (props) => {
   const [press, setPress] = useState(false);
   const [timer, setTimer] = useState(false);
   const dispatch = useDispatch();
@@ -91,6 +91,7 @@ const StartWindow = () => {
         <button
           onClick={() => {
             setPress((prevState) => !prevState);
+            props.playSound();
           }}
           className={S.StartGame}
         >

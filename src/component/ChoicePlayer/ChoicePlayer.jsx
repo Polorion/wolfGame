@@ -33,7 +33,7 @@ const ChoicePlayer = (props) => {
   const dispatch = useDispatch();
 
   const changeOwner = (name) => {
-    dispatch(runGame());
+    dispatch(runGame(true));
     dispatch(choiceOwner(name));
   };
   function SampleNextArrow(props) {

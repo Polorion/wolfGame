@@ -17,19 +17,8 @@ const ButtonControlGame = (props) => {
   };
   const dispatch = useDispatch();
 
-  const audioRef = useRef();
-
-  const playSound = () => {
-    audioRef.current.play();
-    audioRef.current.volume = 0.05;
-  };
-  const stopSound = () => {
-    audioRef.current.pause();
-  };
-
   return (
     <div>
-      <audio loop="loop" ref={audioRef} src={jumpSound}></audio>
       <button
         className={S.full}
         style={{ position: "relative", zIndex: "100000" }}

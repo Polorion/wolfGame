@@ -17,22 +17,23 @@ const ButtonControlGameContainer = (props) => {
   const gameover = useSelector((state) => state.player.missedEggs);
   useEffect(() => {
     if (gameover > 0) {
-      props.runGame();
-      props.gameOver();
+      props.runGame(false);
+      props.gameOver(true);
     }
   }, [gameover]);
   const changeOwner = () => {
     props.choiceOwner(null);
   };
   const changeRunGame = () => {
-    props.runGame();
+    props.runGame(false);
   };
   const restart = () => {
     props.resetAllScore();
     props.resetAllChicken();
     props.restartAllEggs();
+    props.gameOver(false);
     props.choiceOwner(null);
-    props.runGame();
+    props.runGame(false);
   };
   const typeGame = (spawn, speed) => {
     props.setSpeedSpawnEdd(spawn);
