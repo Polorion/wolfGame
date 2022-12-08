@@ -7,7 +7,7 @@ const OpenChickenContainer = (props) => {
   const mandarin = useSelector((state) => state.openChicken.madarin);
 
   return (
-    <div>
+    <div className={S.bodyMandarin}>
       <div
         className={`${S.img} ${S.one} ${mandarin === 1 && S.active}`}
         style={{ bottom: "0%", left: "10%", position: "absolute" }}
