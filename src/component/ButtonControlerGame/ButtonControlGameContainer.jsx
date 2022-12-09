@@ -14,7 +14,7 @@ import {
   refreshOpenMandarin,
   restartAllEggs,
 } from "../../store/reducers/OpenChickeReducer";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const ButtonControlGameContainer = (props) => {
   const gameover = useSelector((state) => state.player.missedEggs);
@@ -64,6 +64,12 @@ const mapStateToProps = (state) => {
   return {
     owner: state.player.owner,
     gameIsRun: state.player.gameIsRun,
+
+    activeEggsTopLeft: state.chicken.activeEggsTopLeft,
+    activeEggsTopRight: state.chicken.activeEggsTopRight,
+    activeEggsBottomRight: state.chicken.activeEggsBottomRight,
+    activeEggsBottomLeft: state.chicken.activeEggsBottomLeft,
+    positionPlayer: state.player.positionPlayer,
   };
 };
 export default connect(mapStateToProps, {

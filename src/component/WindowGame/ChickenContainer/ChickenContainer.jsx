@@ -1,7 +1,11 @@
 import * as React from "react";
 import Chicken from "./Chicken/Chicken";
 import { connect, useSelector } from "react-redux";
-import { aggEgg, moveEgg } from "../../../store/reducers/ChickenReducer";
+import {
+  aggEgg,
+  eggsDel,
+  moveEgg,
+} from "../../../store/reducers/ChickenReducer";
 import { useEffect, useMemo, useRef } from "react";
 import { missedEggs, upScore } from "../../../store/reducers/PlayerReducer";
 import S from "./Chicken/Chicken.module.scss";
@@ -33,37 +37,44 @@ const ChickenContainer = (props) => {
   const eggMove = () => {
     props.moveEgg();
     props.moveOpenEgg();
+  };
+  const check = (yes) => {
     if (refPosition.current === "1" && refEggsLT.current.includes(5)) {
       props.upScore();
+      props.eggsDel("activeEggsTopLeft");
     }
     if (refEggsLT.current.includes(5) && refPosition.current !== "1") {
-      props.startOpenEgg({ type: "openChickenPositionLeft", chiken: 1 });
-      props.missedEggs();
+      if (yes) {
+        props.missedEggs();
+      }
     }
     if (refPosition.current === "3" && refEggsLB.current.includes(5)) {
       props.upScore();
+      props.eggsDel("activeEggsBottomLeft");
     }
     if (refEggsLB.current.includes(5) && refPosition.current !== "3") {
-      props.startOpenEgg({ type: "openChickenPositionLeft", chiken: 2 });
-
-      props.missedEggs();
+      if (yes) {
+        props.missedEggs();
+      }
     }
 
     if (refPosition.current === "2" && refEggsRT.current.includes(5)) {
       props.upScore();
+      props.eggsDel("activeEggsTopRight");
     }
     if (refEggsRT.current.includes(5) && refPosition.current !== "2") {
-      props.startOpenEgg({ type: "openChickenPositionRight", chiken: 3 });
-
-      props.missedEggs();
+      if (yes) {
+        props.missedEggs();
+      }
     }
     if (refPosition.current === "4" && refEggsRB.current.includes(5)) {
       props.upScore();
+      props.eggsDel("activeEggsBottomRight");
     }
     if (refEggsRB.current.includes(5) && refPosition.current !== "4") {
-      props.startOpenEgg({ type: "openChickenPositionRight", chiken: 4 });
-
-      props.missedEggs();
+      if (yes) {
+        props.missedEggs();
+      }
     }
   };
 
@@ -72,10 +83,15 @@ const ChickenContainer = (props) => {
     if (props.gameIsRun) {
       t = setInterval(() => {
         eggMove();
+        setTimeout(() => {
+          check(false);
+        }, [0]);
+        check(true);
       }, props.speedEggMove);
     }
     return () => {
       clearInterval(t);
+      // check(false);
     };
   }, [props.gameIsRun, props.speedEggMove]);
 
@@ -142,6 +158,7 @@ export default connect(mapStateToProps, {
   aggEgg,
   upScore,
   moveOpenEgg,
+  eggsDel,
   startOpenEgg,
   missedEggs,
 })(ChickenContainer);

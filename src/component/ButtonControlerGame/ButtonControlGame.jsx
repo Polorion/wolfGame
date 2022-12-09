@@ -19,7 +19,7 @@ const ButtonControlGame = (props) => {
 
   return (
     <div>
-      <button
+      <div
         className={S.full}
         style={{ position: "relative", zIndex: "100000" }}
         onClick={() => {
@@ -27,9 +27,9 @@ const ButtonControlGame = (props) => {
         }}
       >
         <FullScreen />
-      </button>
+      </div>
       {!props.onliFull && (
-        <button
+        <div
           style={{ position: "relative", zIndex: "100000" }}
           className={S.full}
           onClick={() => {
@@ -39,7 +39,7 @@ const ButtonControlGame = (props) => {
           }}
         >
           <Restart />
-        </button>
+        </div>
       )}{" "}
       {/*<div style={{ position: "relative", zIndex: "99999" }}>*/}
       {/*  <input*/}
@@ -60,13 +60,13 @@ const ButtonControlGame = (props) => {
       {/*    placeholder={"скорость появления "}*/}
       {/*  />*/}
       {/*  {"скорость появления сек "}*/}
-      {/*  <button*/}
+      {/*  <div*/}
       {/*    onClick={() => {*/}
       {/*      props.typeGame(spawn * 1000, move * 1000);*/}
       {/*    }}*/}
       {/*  >*/}
       {/*    go*/}
-      {/*  </button>*/}
+      {/*  </div>*/}
       {/*</div>*/}
     </div>
   );

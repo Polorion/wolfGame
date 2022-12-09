@@ -15,7 +15,15 @@ const GameOver = (props) => {
         }}
       >
         <input placeholder={"ваш телефон"} type="tel" />
-        <button> отправить</button>
+        <button
+          on
+          onClick={() => {
+            console.log(1);
+          }}
+        >
+          {" "}
+          отправить
+        </button>
       </form>
       <Box />
     </div>

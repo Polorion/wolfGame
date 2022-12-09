@@ -8,6 +8,7 @@ export const moveOpenEgg = () => {
     type: moveOpen,
   };
 };
+
 export const refreshOpenMandarin = () => {
   return {
     type: setMandarin,
@@ -84,6 +85,7 @@ const openChickenReducer = (state = initialState, action) => {
         madarin: null,
       };
     }
+
     case "OPEN_START": {
       return {
         ...state,

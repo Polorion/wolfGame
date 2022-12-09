@@ -84,10 +84,10 @@ const initialState = {
   missedEggs: 0,
   owner: null,
   gameIsRun: false,
-  speedEggSpawn: 700,
-  speedEggMove: 700,
+  speedEggSpawn: 1000,
+  speedEggMove: 500,
   typeGame: 1,
-  timeIsGame: 2 * 60,
+  timeIsGame: 300,
   gameOver: false,
 };
 
