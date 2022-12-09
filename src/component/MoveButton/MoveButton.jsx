@@ -8,6 +8,7 @@ import {
   gameOver,
   resetAllScore,
   runGame,
+  setClearBag,
   setSpeedMoveEgg,
   setSpeedSpawnEdd,
   upScore,
@@ -64,6 +65,7 @@ const MoveButton = (props) => {
   return (
     <div
       onClick={() => {
+        props.setClearBag();
         refPosition.current = props.positionPlayer;
         refEggsLT.current = props.activeEggsTopLeft;
         refEggsLB.current = props.activeEggsBottomLeft;
@@ -105,5 +107,6 @@ export default connect(mapStateToProps, {
   setSpeedMoveEgg,
   startOpenEgg,
   gameOver,
+  setClearBag,
   upScore,
 })(MoveButton);

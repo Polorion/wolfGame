@@ -16,11 +16,6 @@ const Player = (props) => {
         src={props.img}
         alt=""
       />
-      <Basket
-        position={props.position}
-        basket={props.basket}
-        positionBasket={props.positionBasket}
-      />
     </div>
   );
 };

@@ -10,10 +10,16 @@ const startedGame = "STARTED_GAME";
 const timeGameSet = "TIME_GAME_SET";
 const timeGameReset = "TIME_GAME_RESET";
 const setGemaOver = "SET_GAME_OVER";
+const clearBag = "CLEAR_BAG";
 export const movePositionPlayer = (position) => {
   return {
     type: ChangePositionPlayer,
     position,
+  };
+};
+export const setClearBag = () => {
+  return {
+    type: clearBag,
   };
 };
 export const gameOver = (boolean) => {
@@ -89,6 +95,7 @@ const initialState = {
   typeGame: 1,
   timeIsGame: 300,
   gameOver: false,
+  success: false,
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -97,6 +104,11 @@ const playerReducer = (state = initialState, action) => {
       return {
         ...state,
         gameOver: action.boolean,
+      };
+    case "CLEAR_BAG":
+      return {
+        ...state,
+        success: false,
       };
     case "TIME_GAME_RESET":
       return {
@@ -138,6 +150,7 @@ const playerReducer = (state = initialState, action) => {
       return {
         ...state,
         score: state.score + 1,
+        success: true,
       };
     case "SET_MISS":
       return {

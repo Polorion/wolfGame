@@ -7,7 +7,11 @@ import {
   moveEgg,
 } from "../../../store/reducers/ChickenReducer";
 import { useEffect, useMemo, useRef } from "react";
-import { missedEggs, upScore } from "../../../store/reducers/PlayerReducer";
+import {
+  missedEggs,
+  setClearBag,
+  upScore,
+} from "../../../store/reducers/PlayerReducer";
 import S from "./Chicken/Chicken.module.scss";
 import scoreImg from "../../../img/player/score.png";
 import {
@@ -36,6 +40,7 @@ const ChickenContainer = (props) => {
 
   const eggMove = () => {
     props.moveEgg();
+    props.setClearBag();
     props.moveOpenEgg();
   };
   const check = (yes) => {
@@ -160,5 +165,6 @@ export default connect(mapStateToProps, {
   moveOpenEgg,
   eggsDel,
   startOpenEgg,
+  setClearBag,
   missedEggs,
 })(ChickenContainer);
