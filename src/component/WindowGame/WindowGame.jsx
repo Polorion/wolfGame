@@ -86,7 +86,7 @@ const WindowGame = () => {
             {owner && <ButtonControlGameContainer />}
             <Timer />
             <ChickenContainer />
-            <GameOver />
+            <GameOver gameOver={gameOver} />
             <PlayerContainer />
             <OpenChickenContainer />
             <div className={S.buttonBody}>
