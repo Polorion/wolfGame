@@ -14,6 +14,7 @@ import ChoisePlayer from "../ChoicePlayer/ChoicePlayer";
 import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
 import Timer from "../Timer/Timer";
 import OpenChickenContainer from "../OpenChikenContainer/OpenChickenContainer";
+import GameOver from "../GameOver/GameOver";
 
 const WindowGame = () => {
   const ref = useRef();
@@ -85,6 +86,7 @@ const WindowGame = () => {
             {owner && <ButtonControlGameContainer />}
             <Timer />
             <ChickenContainer />
+            <GameOver />
             <PlayerContainer />
             <OpenChickenContainer />
             <div className={S.buttonBody}>

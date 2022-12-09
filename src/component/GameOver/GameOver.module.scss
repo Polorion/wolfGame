@@ -1,0 +1,41 @@
+.body {
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  svg {
+    width: 200%;
+    height: 200%;
+    path {
+      fill: rgb(178, 88, 3);
+    }
+  }
+  z-index: 1000;
+}
+
+.form {
+  position: absolute;
+  top: 65%;
+  left: 20%;
+  display: flex;
+  align-items: flex-start;
+  input {
+    margin-right: 50%;
+    transform: rotate(4deg);
+    background-color: transparent;
+    border: none;
+    :focus {
+      outline: none;
+    }
+  }
+  button {
+    transform: rotate(4deg);
+    margin-top: 10%;
+  }
+}
+
+.score {
+  transform: rotate(4deg);
+  position: absolute;
+  top: 25%;
+  left: 30%;
+}
