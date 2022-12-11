@@ -18,6 +18,10 @@ import { useEffect, useRef } from "react";
 
 const ButtonControlGameContainer = (props) => {
   const gameover = useSelector((state) => state.player.missedEggs);
+  const score = useSelector((state) => state.player.score);
+  useEffect(() => {
+    typeGame(1000 - score * 5, 1000 - score * 5);
+  }, [score]);
   useEffect(() => {
     if (gameover > 0) {
       props.runGame(false);
@@ -42,7 +46,6 @@ const ButtonControlGameContainer = (props) => {
   const typeGame = (spawn, speed) => {
     props.setSpeedSpawnEdd(spawn);
     props.setSpeedMoveEgg(speed);
-    restart();
   };
   return (
     <div

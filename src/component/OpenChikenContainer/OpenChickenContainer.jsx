@@ -10,26 +10,26 @@ const OpenChickenContainer = (props) => {
     <div className={S.bodyMandarin}>
       <div
         className={`${S.img} ${S.one} ${mandarin === 1 && S.active}`}
-        style={{ bottom: "0%", left: "10%", position: "absolute" }}
+        style={{ bottom: "10%", left: "10%", position: "absolute" }}
       >
         <Mandarin />
       </div>
       )
       <div
         className={`${S.img} ${S.two} ${mandarin === 2 && S.active}`}
-        style={{ bottom: "0%", left: "35%", position: "absolute" }}
+        style={{ bottom: "10%", left: "35%", position: "absolute" }}
       >
         <Mandarin />
       </div>
       <div
         className={`${S.img} ${S.three} ${mandarin === 3 && S.active}`}
-        style={{ bottom: "0%", left: "60%", position: "absolute" }}
+        style={{ bottom: "10%", left: "60%", position: "absolute" }}
       >
         <Mandarin />
       </div>
       <div
         className={`${S.img} ${S.four} ${mandarin === 4 && S.active}`}
-        style={{ bottom: "0%", left: "85%", position: "absolute" }}
+        style={{ bottom: "10%", left: "85%", position: "absolute" }}
       >
         <Mandarin />
       </div>
