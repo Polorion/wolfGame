@@ -14,6 +14,8 @@ import { gameIsStarted } from "../../store/reducers/PlayerReducer";
 import ButtonControlGameContainer from "../ButtonControlerGame/ButtonControlGameContainer";
 
 const StartWindow = (props) => {
+  console.log(props, 111);
+  console.log(props, 111);
   const [press, setPress] = useState(false);
   const [timer, setTimer] = useState(false);
   const dispatch = useDispatch();

@@ -113,7 +113,7 @@ const playerReducer = (state = initialState, action) => {
     case "TIME_GAME_RESET":
       return {
         ...state,
-        timeIsGame: 2 * 60,
+        timeIsGame: 300,
       };
     case "STARTED_GAME":
       return {

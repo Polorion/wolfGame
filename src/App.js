@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import store from "./store/Store";
 import Test from "./component/Test";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   useEffect(() => {}, []);
